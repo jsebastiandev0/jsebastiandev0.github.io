@@ -22,7 +22,7 @@
         href="#"\r
         class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"\r
       >\r
-        Get started\r
+        Contact me\r
         <svg\r
           class="w-5 h-5 ml-2 -mr-1"\r
           fill="currentColor"\r
@@ -40,7 +40,7 @@
         href="#"\r
         class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"\r
       >\r
-        Speak to Sales\r
+        Download CV\r
       </a>\r
     </div>\r
     <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">\r
@@ -144,7 +144,7 @@
     </p>\r
   </div>\r
 </footer>\r
-`,c=`<section class="bg-white dark:bg-gray-900">\r
+`,g=`<section class="bg-white dark:bg-gray-900">\r
   <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">\r
     <h2\r
       class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white"\r
@@ -208,46 +208,228 @@
     </form>\r
   </div>\r
 </section>\r
-`,g=`<section class="bg-white dark:bg-gray-900">\r
-  <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">\r
-    <div class="max-w-screen-md">\r
-      <h2\r
-        class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white"\r
-      >\r
-        Work experience\r
-      </h2>\r
-      <p class="mb-8 font-light text-gray-500 sm:text-xl dark:text-gray-400">\r
-        Flowbite helps you connect with friends, family and communities of\r
-        people who share your interests. Connecting with your friends and family\r
-        as well as discovering new ones is easy with features like Groups, Watch\r
-        and Marketplace.\r
-      </p>\r
-      <div\r
-        class="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4"\r
-      >\r
-        <a\r
-          href="#"\r
-          class="inline-flex items-center justify-center px-4 py-2.5 text-base font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"\r
-        >\r
-          Get started\r
-        </a>\r
-        <a\r
-          href="#"\r
-          class="inline-flex items-center justify-center px-4 py-2.5 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-600"\r
-        >\r
-          <svg\r
-            class="mr-2 -ml-1 w-5 h-5"\r
-            fill="currentColor"\r
-            viewBox="0 0 20 20"\r
-            xmlns="http://www.w3.org/2000/svg"\r
-          >\r
-            <path\r
-              d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"\r
-            ></path>\r
-          </svg>\r
-          View more\r
-        </a>\r
+`,c=`<section class="bg-white py-8 antialiased dark:bg-gray-900 md:py-16">\r
+  <div class="mx-auto max-w-screen-lg px-4 2xl:px-0">\r
+    <h2\r
+      class="shrink-0 text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl"\r
+    >\r
+      Work experience:\r
+    </h2>\r
+    <div class="mt-6 flow-root">\r
+      <div class="-my-6 divide-y divide-gray-200 dark:divide-gray-800">\r
+        <!-- TCS -->\r
+        <div class="space-y-4 py-6 md:py-8">\r
+          <div class="grid gap-4">\r
+            <a\r
+              href="#"\r
+              class="text-xl font-semibold text-gray-900 hover:underline dark:text-white"\r
+              >Senior FullStack Developer · Tata Consultancy Services · (Feb\r
+              2023 - Jul 2024)\r
+            </a>\r
+          </div>\r
+\r
+          <ul class="list-disc pl-6">\r
+            <li class="text-base font-normal text-gray-500 dark:text-gray-400">\r
+              Implementation of functionalities to the electronic billing system\r
+              for Avianca Airlines\r
+            </li>\r
+            <li class="text-base font-normal text-gray-500 dark:text-gray-400">\r
+              Migrated legacy systems to .NET Core &amp; Angular\r
+            </li>\r
+            <li class="text-base font-normal text-gray-500 dark:text-gray-400">\r
+              Developed and maintained REST APIs and web apps\r
+            </li>\r
+            <li class="text-base font-normal text-gray-500 dark:text-gray-400">\r
+              Implementation and integration of Azure Functions into the core\r
+              solution\r
+            </li>\r
+            <li class="text-base font-normal text-gray-500 dark:text-gray-400">\r
+              Collaborated with cross-functional teams and participate in Scrum\r
+              ceremonies\r
+            </li>\r
+            <li class="text-base font-normal text-gray-500 dark:text-gray-400">\r
+              Maintaining stored procedures and functions (in SQL Server)\r
+            </li>\r
+            <li class="text-base font-normal text-gray-500 dark:text-gray-400">\r
+              Use Azure DevOps for PBIs management (requirements, documentation,\r
+              deploy CI/CD, etc.)\r
+            </li>\r
+          </ul>\r
+\r
+          <!-- <p class="text-sm font-medium text-gray-500 dark:text-gray-400">\r
+            Answered 1 day ago by\r
+            <a href="#" class="text-gray-900 hover:underline dark:text-white"\r
+              >Bonnie Green</a\r
+            >\r
+          </p> -->\r
+\r
+          <div>\r
+            <span\r
+              class="inline-block rounded bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300 md:mb-0"\r
+            >\r
+              .NET Core\r
+            </span>\r
+            <span\r
+              class="inline-block rounded bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300 md:mb-0"\r
+            >\r
+              Angular\r
+            </span>\r
+            <span\r
+              class="inline-block rounded bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300 md:mb-0"\r
+            >\r
+              Azure Functions\r
+            </span>\r
+            <span\r
+              class="inline-block rounded bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300 md:mb-0"\r
+            >\r
+              SQL Server\r
+            </span>\r
+            <span\r
+              class="inline-block rounded bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300 md:mb-0"\r
+            >\r
+              REST APIs\r
+            </span>\r
+          </div>\r
+        </div>\r
+\r
+        <!-- SoulSystem -->\r
+        <div class="space-y-4 py-6 md:py-8">\r
+          <div class="grid gap-4">\r
+            <a\r
+              href="#"\r
+              class="text-xl font-semibold text-gray-900 hover:underline dark:text-white"\r
+              >Full Stack Developer · SoulSystem SAS · (Feb 2020 - Feb 2023)\r
+            </a>\r
+          </div>\r
+\r
+          <ul class="list-disc pl-6">\r
+            <li class="text-base font-normal text-gray-500 dark:text-gray-400">\r
+              Designed and developed applications for pharmaceutical and\r
+              microbiological laboratories\r
+            </li>\r
+            <li class="text-base font-normal text-gray-500 dark:text-gray-400">\r
+              Managed full development lifecycle from requirements gathering to\r
+              production deployment\r
+            </li>\r
+            <li class="text-base font-normal text-gray-500 dark:text-gray-400">\r
+              Bug fixes and implementation of improvements\r
+            </li>\r
+            <li class="text-base font-normal text-gray-500 dark:text-gray-400">\r
+              Automated laboratory processes, reducing manual errors\r
+            </li>\r
+            <li class="text-base font-normal text-gray-500 dark:text-gray-400">\r
+              Integrated third-party systems (ERP, CRM) through custom APIs\r
+            </li>\r
+            <li class="text-base font-normal text-gray-500 dark:text-gray-400">\r
+              Training new developers in technical and business functionalities\r
+            </li>\r
+            <li class="text-base font-normal text-gray-500 dark:text-gray-400">\r
+              Code reviews, requirement analysis, validation of requirements\r
+            </li>\r
+            <li class="text-base font-normal text-gray-500 dark:text-gray-400">\r
+              AWS (S3, E2C, Lambda, deployments)\r
+            </li>\r
+          </ul>\r
+\r
+          <div>\r
+            <span\r
+              class="inline-block rounded bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300 md:mb-0"\r
+            >\r
+              Laravel\r
+            </span>\r
+            <span\r
+              class="inline-block rounded bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300 md:mb-0"\r
+            >\r
+              Angular\r
+            </span>\r
+            <span\r
+              class="inline-block rounded bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300 md:mb-0"\r
+            >\r
+              AWS\r
+            </span>\r
+            <span\r
+              class="inline-block rounded bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300 md:mb-0"\r
+            >\r
+              MySQL\r
+            </span>\r
+            <span\r
+              class="inline-block rounded bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300 md:mb-0"\r
+            >\r
+              REST APIs\r
+            </span>\r
+          </div>\r
+        </div>\r
+\r
+        <!-- NovoClick -->\r
+        <div class="space-y-4 py-6 md:py-8">\r
+          <div class="grid gap-4">\r
+            <a\r
+              href="#"\r
+              class="text-xl font-semibold text-gray-900 hover:underline dark:text-white"\r
+              >Web Developer · Novoclick · (Sep 2019 – Feb 2020)\r
+            </a>\r
+          </div>\r
+\r
+          <ul class="list-disc pl-6">\r
+            <li class="text-base font-normal text-gray-500 dark:text-gray-400">\r
+              Maintaining monolithic (MVC) applications and lead management\r
+              dashboards.\r
+            </li>\r
+            <li class="text-base font-normal text-gray-500 dark:text-gray-400">\r
+              Web developer and systems administrator focused on lead management\r
+              and high-impact marketing campaigns through social media.\r
+            </li>\r
+            <li class="text-base font-normal text-gray-500 dark:text-gray-400">\r
+              Integration of landing pages and tools like Zapier, mass emails\r
+              senders and WordPress pages.\r
+            </li>\r
+          </ul>\r
+\r
+          <!-- <p class="text-sm font-medium text-gray-500 dark:text-gray-400">\r
+            Answered 1 day ago by\r
+            <a href="#" class="text-gray-900 hover:underline dark:text-white"\r
+              >Bonnie Green</a\r
+            >\r
+          </p> -->\r
+\r
+          <div>\r
+            <span\r
+              class="inline-block rounded bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300 md:mb-0"\r
+            >\r
+              PHP\r
+            </span>\r
+            <span\r
+              class="inline-block rounded bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300 md:mb-0"\r
+            >\r
+              .NET Framework\r
+            </span>\r
+            <span\r
+              class="inline-block rounded bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300 md:mb-0"\r
+            >\r
+              WordPress\r
+            </span>\r
+            <span\r
+              class="inline-block rounded bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300 md:mb-0"\r
+            >\r
+              MySQL\r
+            </span>\r
+            <span\r
+              class="inline-block rounded bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300 md:mb-0"\r
+            >\r
+              REST APIs\r
+            </span>\r
+          </div>\r
+        </div>\r
       </div>\r
+    </div>\r
+\r
+    <div class="mt-6 flex items-center justify-center lg:justify-start">\r
+      <button\r
+        type="button"\r
+        class="w-full rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700 sm:w-auto"\r
+      >\r
+        View all experiences\r
+      </button>\r
     </div>\r
   </div>\r
 </section>\r
@@ -415,4 +597,4 @@
     </div>\r
   </div>\r
 </section>\r
-`,p=o.replace("VITE_LOGO_PLACEHOLDER",s),h=i.replace("VITE_LOGO_PLACEHOLDER",s),u=d.replace("YEAR_PLACEHOLDER",new Date().getFullYear());document.querySelector("#app").innerHTML=p;document.querySelector("#header").innerHTML=h;document.querySelector("#contact").innerHTML=c;document.querySelector("#footer").innerHTML=u;document.querySelector("#about").innerHTML=g;document.querySelector("#services").innerHTML=m;
+`,x=o.replace("VITE_LOGO_PLACEHOLDER",s),p=i.replace("VITE_LOGO_PLACEHOLDER",s),u=d.replace("YEAR_PLACEHOLDER",new Date().getFullYear());document.querySelector("#app").innerHTML=x;document.querySelector("#header").innerHTML=p;document.querySelector("#contact").innerHTML=g;document.querySelector("#footer").innerHTML=u;document.querySelector("#about").innerHTML=c;document.querySelector("#services").innerHTML=m;
