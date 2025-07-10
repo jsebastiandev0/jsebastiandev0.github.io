@@ -1,4 +1,4 @@
-(function(){const n=document.createElement("link").relList;if(n&&n.supports&&n.supports("modulepreload"))return;for(const r of document.querySelectorAll('link[rel="modulepreload"]'))a(r);new MutationObserver(r=>{for(const e of r)if(e.type==="childList")for(const t of e.addedNodes)t.tagName==="LINK"&&t.rel==="modulepreload"&&a(t)}).observe(document,{childList:!0,subtree:!0});function l(r){const e={};return r.integrity&&(e.integrity=r.integrity),r.referrerPolicy&&(e.referrerPolicy=r.referrerPolicy),r.crossOrigin==="use-credentials"?e.credentials="include":r.crossOrigin==="anonymous"?e.credentials="omit":e.credentials="same-origin",e}function a(r){if(r.ep)return;r.ep=!0;const e=l(r);fetch(r.href,e)}})();const s=""+new URL("../vite.svg",import.meta.url).href,o=`<section class="bg-white dark:bg-gray-900">\r
+(function(){const n=document.createElement("link").relList;if(n&&n.supports&&n.supports("modulepreload"))return;for(const r of document.querySelectorAll('link[rel="modulepreload"]'))a(r);new MutationObserver(r=>{for(const e of r)if(e.type==="childList")for(const t of e.addedNodes)t.tagName==="LINK"&&t.rel==="modulepreload"&&a(t)}).observe(document,{childList:!0,subtree:!0});function l(r){const e={};return r.integrity&&(e.integrity=r.integrity),r.referrerPolicy&&(e.referrerPolicy=r.referrerPolicy),r.crossOrigin==="use-credentials"?e.credentials="include":r.crossOrigin==="anonymous"?e.credentials="omit":e.credentials="same-origin",e}function a(r){if(r.ep)return;r.ep=!0;const e=l(r);fetch(r.href,e)}})();const s=""+new URL("../vite.svg",import.meta.url).href,i=`<section class="bg-white dark:bg-gray-900">\r
   <div\r
     class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12"\r
   >\r
@@ -11,12 +11,7 @@
       <p\r
         class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400"\r
       >\r
-        Software Engineer with 6+ years of experience designing and developing\r
-        scalable software solutions across multiple technology stacks.\r
-        Implementing best practices and agile methodologies to deliver\r
-        high-quality systems that solve technical challenges. Passionate about\r
-        solutions architecture, systems design, and driving business value\r
-        through robust, maintainable code.\r
+        FullStack Developer | Solutions Architect | Systems Designer\r
       </p>\r
       <a\r
         href="#"\r
@@ -51,7 +46,48 @@
     </div>\r
   </div>\r
 </section>\r
-`,i=`<nav class="bg-white border-gray-200 dark:bg-gray-900">\r
+<section class="bg-white px-4 py-8 antialiased dark:bg-gray-900 md:py-16">\r
+  <div\r
+    class="mx-auto grid max-w-screen-xl rounded-lg bg-gray-50 p-4 dark:bg-gray-800 md:p-8 lg:grid-cols-12 lg:gap-8 lg:p-16 xl:gap-16"\r
+  >\r
+    <div class="lg:col-span-5 lg:mt-0">\r
+      <a href="#">\r
+        <img\r
+          class="mb-4 h-56 w-56 dark:hidden sm:h-96 sm:w-96 md:h-full md:w-full"\r
+          src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-components.svg"\r
+          alt="peripherals"\r
+        />\r
+        <img\r
+          class="mb-4 hidden dark:block md:h-full"\r
+          src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-components-dark.svg"\r
+          alt="peripherals"\r
+        />\r
+      </a>\r
+    </div>\r
+    <div class="me-auto place-self-center lg:col-span-7">\r
+      <h1\r
+        class="mb-3 text-2xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white md:text-4xl"\r
+      >\r
+        A little about me...\r
+      </h1>\r
+      <p class="mb-6 text-gray-500 dark:text-gray-400">\r
+        Software Engineer with 6+ years of experience designing and developing\r
+        scalable software solutions across multiple technology stacks.\r
+        Implementing best practices and agile methodologies to deliver\r
+        high-quality systems that solve technical challenges. Passionate about\r
+        solutions architecture, systems design, and driving business value\r
+        through robust, maintainable code.\r
+      </p>\r
+      <a\r
+        href="#"\r
+        class="inline-flex items-center justify-center rounded-lg bg-primary-700 px-5 py-3 text-center text-base font-medium text-white hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"\r
+      >\r
+        Know more about me?\r
+      </a>\r
+    </div>\r
+  </div>\r
+</section>\r
+`,o=`<nav class="bg-white border-gray-200 dark:bg-gray-900">\r
   <div\r
     class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"\r
   >\r
@@ -433,168 +469,341 @@
     </div>\r
   </div>\r
 </section>\r
-`,m=`<section class="bg-white dark:bg-gray-900">\r
-  <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">\r
-    <div class="max-w-screen-md mb-8 lg:mb-16">\r
+`,m=`<section class="bg-white dark:bg-gray-900 antialiased">\r
+  <div class="max-w-screen-xl px-4 py-8 mx-auto lg:px-6 sm:py-16 lg:py-24">\r
+    <div class="max-w-2xl mx-auto text-center">\r
       <h2\r
-        class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white"\r
+        class="text-3xl font-extrabold leading-tight tracking-tight text-gray-900 sm:text-4xl dark:text-white"\r
       >\r
-        Services I offered\r
+        Services I offer\r
       </h2>\r
-      <p class="text-gray-500 sm:text-xl dark:text-gray-400">\r
-        Here at Flowbite we focus on markets where technology, innovation, and\r
-        capital can unlock long-term value and drive economic growth.\r
+      <p\r
+        class="mt-4 text-base font-normal text-gray-500 sm:text-xl dark:text-gray-400"\r
+      >\r
+        Crafted with skill and care to help our clients grow their business!\r
       </p>\r
     </div>\r
+\r
     <div\r
-      class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0"\r
+      class="grid grid-cols-1 mt-12 text-center sm:mt-16 gap-x-20 gap-y-12 sm:grid-cols-2 lg:grid-cols-3"\r
     >\r
-      <div>\r
-        <div\r
-          class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900"\r
+      <div class="space-y-4">\r
+        <span\r
+          class="bg-gray-100 text-gray-900 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300"\r
         >\r
-          <svg\r
-            class="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300"\r
-            fill="currentColor"\r
-            viewBox="0 0 20 20"\r
-            xmlns="http://www.w3.org/2000/svg"\r
-          >\r
-            <path\r
-              fill-rule="evenodd"\r
-              d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z"\r
-              clip-rule="evenodd"\r
-            ></path>\r
-          </svg>\r
-        </div>\r
-        <h3 class="mb-2 text-xl font-bold dark:text-white">Marketing</h3>\r
-        <p class="text-gray-500 dark:text-gray-400">\r
-          Plan it, create it, launch it. Collaborate seamlessly with all the\r
-          organization and hit your marketing goals every month with our\r
-          marketing plan.\r
-        </p>\r
-      </div>\r
-      <div>\r
-        <div\r
-          class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900"\r
+          Alphabet Inc.\r
+        </span>\r
+        <h3\r
+          class="text-2xl font-bold leading-tight text-gray-900 dark:text-white"\r
         >\r
-          <svg\r
-            class="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300"\r
-            fill="currentColor"\r
-            viewBox="0 0 20 20"\r
-            xmlns="http://www.w3.org/2000/svg"\r
-          >\r
-            <path\r
-              d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"\r
-            ></path>\r
-          </svg>\r
-        </div>\r
-        <h3 class="mb-2 text-xl font-bold dark:text-white">Legal</h3>\r
-        <p class="text-gray-500 dark:text-gray-400">\r
-          Protect your organization, devices and stay compliant with our\r
-          structured workflows and custom permissions made for you.\r
-        </p>\r
-      </div>\r
-      <div>\r
-        <div\r
-          class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900"\r
-        >\r
-          <svg\r
-            class="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300"\r
-            fill="currentColor"\r
-            viewBox="0 0 20 20"\r
-            xmlns="http://www.w3.org/2000/svg"\r
-          >\r
-            <path\r
-              fill-rule="evenodd"\r
-              d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z"\r
-              clip-rule="evenodd"\r
-            ></path>\r
-            <path\r
-              d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"\r
-            ></path>\r
-          </svg>\r
-        </div>\r
-        <h3 class="mb-2 text-xl font-bold dark:text-white">\r
-          Business Automation\r
+          Official website\r
         </h3>\r
-        <p class="text-gray-500 dark:text-gray-400">\r
-          Auto-assign tasks, send Slack messages, and much more. Now power up\r
-          with hundreds of new templates to help you get started.\r
+        <p class="text-lg font-normal text-gray-500 dark:text-gray-400">\r
+          Flowbite helps you connect with friends, family and communities of\r
+          people who share your interests.\r
         </p>\r
-      </div>\r
-      <div>\r
-        <div\r
-          class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900"\r
+        <a\r
+          href="#"\r
+          title=""\r
+          class="text-white bg-primary-700 justify-center hover:bg-primary-800 inline-flex items-center focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"\r
+          role="button"\r
         >\r
+          View case study\r
           <svg\r
-            class="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300"\r
-            fill="currentColor"\r
-            viewBox="0 0 20 20"\r
+            aria-hidden="true"\r
+            class="w-5 h-5 ml-2 -mr-1"\r
             xmlns="http://www.w3.org/2000/svg"\r
+            viewBox="0 0 20 20"\r
+            fill="currentColor"\r
           >\r
-            <path\r
-              d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"\r
-            ></path>\r
             <path\r
               fill-rule="evenodd"\r
-              d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z"\r
+              d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"\r
               clip-rule="evenodd"\r
-            ></path>\r
+            />\r
           </svg>\r
-        </div>\r
-        <h3 class="mb-2 text-xl font-bold dark:text-white">Finance</h3>\r
-        <p class="text-gray-500 dark:text-gray-400">\r
-          Audit-proof software built for critical financial operations like\r
-          month-end close and quarterly budgeting.\r
-        </p>\r
+        </a>\r
       </div>\r
-      <div>\r
-        <div\r
-          class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900"\r
+\r
+      <div class="space-y-4">\r
+        <span\r
+          class="bg-gray-100 text-gray-900 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300"\r
         >\r
-          <svg\r
-            class="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300"\r
-            fill="currentColor"\r
-            viewBox="0 0 20 20"\r
-            xmlns="http://www.w3.org/2000/svg"\r
-          >\r
-            <path\r
-              d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z"\r
-            ></path>\r
-          </svg>\r
-        </div>\r
-        <h3 class="mb-2 text-xl font-bold dark:text-white">\r
-          Enterprise Design\r
+          Microsoft Corp.\r
+        </span>\r
+        <h3\r
+          class="text-2xl font-bold leading-tight text-gray-900 dark:text-white"\r
+        >\r
+          Management system\r
         </h3>\r
-        <p class="text-gray-500 dark:text-gray-400">\r
-          Craft beautiful, delightful experiences for both marketing and product\r
-          with real cross-company collaboration.\r
+        <p class="text-lg font-normal text-gray-500 dark:text-gray-400">\r
+          Flowbite helps you connect with friends, family and communities of\r
+          people who share your interests.\r
         </p>\r
-      </div>\r
-      <div>\r
-        <div\r
-          class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900"\r
+        <a\r
+          href="#"\r
+          title=""\r
+          class="text-white bg-primary-700 justify-center hover:bg-primary-800 inline-flex items-center focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"\r
+          role="button"\r
         >\r
+          View case study\r
           <svg\r
-            class="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300"\r
-            fill="currentColor"\r
-            viewBox="0 0 20 20"\r
+            aria-hidden="true"\r
+            class="w-5 h-5 ml-2 -mr-1"\r
             xmlns="http://www.w3.org/2000/svg"\r
+            viewBox="0 0 20 20"\r
+            fill="currentColor"\r
           >\r
             <path\r
               fill-rule="evenodd"\r
-              d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"\r
+              d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"\r
               clip-rule="evenodd"\r
-            ></path>\r
+            />\r
           </svg>\r
-        </div>\r
-        <h3 class="mb-2 text-xl font-bold dark:text-white">Operations</h3>\r
-        <p class="text-gray-500 dark:text-gray-400">\r
-          Keep your company’s lights on with customizable, iterative, and\r
-          structured workflows built for all efficient teams and individual.\r
+        </a>\r
+      </div>\r
+\r
+      <div class="space-y-4">\r
+        <span\r
+          class="bg-gray-100 text-gray-900 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300"\r
+        >\r
+          Adobe Inc.\r
+        </span>\r
+        <h3\r
+          class="text-2xl font-bold leading-tight text-gray-900 dark:text-white"\r
+        >\r
+          Logo design\r
+        </h3>\r
+        <p class="text-lg font-normal text-gray-500 dark:text-gray-400">\r
+          Flowbite helps you connect with friends, family and communities of\r
+          people who share your interests.\r
         </p>\r
+        <a\r
+          href="#"\r
+          title=""\r
+          class="text-white bg-primary-700 justify-center hover:bg-primary-800 inline-flex items-center focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"\r
+          role="button"\r
+        >\r
+          View case study\r
+          <svg\r
+            aria-hidden="true"\r
+            class="w-5 h-5 ml-2 -mr-1"\r
+            xmlns="http://www.w3.org/2000/svg"\r
+            viewBox="0 0 20 20"\r
+            fill="currentColor"\r
+          >\r
+            <path\r
+              fill-rule="evenodd"\r
+              d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"\r
+              clip-rule="evenodd"\r
+            />\r
+          </svg>\r
+        </a>\r
       </div>\r
     </div>\r
   </div>\r
 </section>\r
-`,x=o.replace("VITE_LOGO_PLACEHOLDER",s),p=i.replace("VITE_LOGO_PLACEHOLDER",s),u=d.replace("YEAR_PLACEHOLDER",new Date().getFullYear());document.querySelector("#app").innerHTML=x;document.querySelector("#header").innerHTML=p;document.querySelector("#contact").innerHTML=g;document.querySelector("#footer").innerHTML=u;document.querySelector("#about").innerHTML=c;document.querySelector("#services").innerHTML=m;
+`,x=`<section class="bg-white dark:bg-gray-900">\r
+  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">\r
+    <div class="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">\r
+      <h2\r
+        class="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white"\r
+      >\r
+        Projects\r
+      </h2>\r
+      <p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">\r
+        You can check all my projects on my Gitub profile, but here are some of\r
+        the most recent ones I have worked on.\r
+      </p>\r
+    </div>\r
+    <div class="grid gap-8 lg:grid-cols-3">\r
+      <article\r
+        class="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"\r
+      >\r
+        <div class="flex justify-between items-center mb-5 text-gray-500">\r
+          <span\r
+            class="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800"\r
+          >\r
+            <svg\r
+              class="mr-1 w-3 h-3"\r
+              fill="currentColor"\r
+              viewBox="0 0 20 20"\r
+              xmlns="http://www.w3.org/2000/svg"\r
+            >\r
+              <path\r
+                d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"\r
+              ></path>\r
+            </svg>\r
+            Tutorial\r
+          </span>\r
+          <span class="text-sm">14 days ago</span>\r
+        </div>\r
+        <h2\r
+          class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"\r
+        >\r
+          <a href="#">How to quickly deploy a static website</a>\r
+        </h2>\r
+        <p class="mb-5 font-light text-gray-500 dark:text-gray-400">\r
+          Static websites are now used to bootstrap lots of websites and are\r
+          becoming the basis for a variety of tools that even influence both web\r
+          designers and developers influence both web designers and developers.\r
+        </p>\r
+        <div class="flex justify-between items-center">\r
+          <div class="flex items-center space-x-4">\r
+            <img\r
+              class="w-7 h-7 rounded-full"\r
+              src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png"\r
+              alt="Jese Leos avatar"\r
+            />\r
+            <span class="font-medium dark:text-white"> Jese Leos </span>\r
+          </div>\r
+          <a\r
+            href="#"\r
+            class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline"\r
+          >\r
+            Read more\r
+            <svg\r
+              class="ml-2 w-4 h-4"\r
+              fill="currentColor"\r
+              viewBox="0 0 20 20"\r
+              xmlns="http://www.w3.org/2000/svg"\r
+            >\r
+              <path\r
+                fill-rule="evenodd"\r
+                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"\r
+                clip-rule="evenodd"\r
+              ></path>\r
+            </svg>\r
+          </a>\r
+        </div>\r
+      </article>\r
+      <article\r
+        class="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"\r
+      >\r
+        <div class="flex justify-between items-center mb-5 text-gray-500">\r
+          <span\r
+            class="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800"\r
+          >\r
+            <svg\r
+              class="mr-1 w-3 h-3"\r
+              fill="currentColor"\r
+              viewBox="0 0 20 20"\r
+              xmlns="http://www.w3.org/2000/svg"\r
+            >\r
+              <path\r
+                fill-rule="evenodd"\r
+                d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z"\r
+                clip-rule="evenodd"\r
+              ></path>\r
+              <path d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z"></path>\r
+            </svg>\r
+            Article\r
+          </span>\r
+          <span class="text-sm">14 days ago</span>\r
+        </div>\r
+        <h2\r
+          class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"\r
+        >\r
+          <a href="#">Our first project with React</a>\r
+        </h2>\r
+        <p class="mb-5 font-light text-gray-500 dark:text-gray-400">\r
+          Static websites are now used to bootstrap lots of websites and are\r
+          becoming the basis for a variety of tools that even influence both web\r
+          designers and developers influence both web designers and developers.\r
+        </p>\r
+        <div class="flex justify-between items-center">\r
+          <div class="flex items-center space-x-4">\r
+            <img\r
+              class="w-7 h-7 rounded-full"\r
+              src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"\r
+              alt="Bonnie Green avatar"\r
+            />\r
+            <span class="font-medium dark:text-white"> Bonnie Green </span>\r
+          </div>\r
+          <a\r
+            href="#"\r
+            class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline"\r
+          >\r
+            Read more\r
+            <svg\r
+              class="ml-2 w-4 h-4"\r
+              fill="currentColor"\r
+              viewBox="0 0 20 20"\r
+              xmlns="http://www.w3.org/2000/svg"\r
+            >\r
+              <path\r
+                fill-rule="evenodd"\r
+                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"\r
+                clip-rule="evenodd"\r
+              ></path>\r
+            </svg>\r
+          </a>\r
+        </div>\r
+      </article>\r
+      <article\r
+        class="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"\r
+      >\r
+        <div class="flex justify-between items-center mb-5 text-gray-500">\r
+          <span\r
+            class="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800"\r
+          >\r
+            <svg\r
+              class="mr-1 w-3 h-3"\r
+              fill="currentColor"\r
+              viewBox="0 0 20 20"\r
+              xmlns="http://www.w3.org/2000/svg"\r
+            >\r
+              <path\r
+                fill-rule="evenodd"\r
+                d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z"\r
+                clip-rule="evenodd"\r
+              ></path>\r
+              <path d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z"></path>\r
+            </svg>\r
+            Article\r
+          </span>\r
+          <span class="text-sm">14 days ago</span>\r
+        </div>\r
+        <h2\r
+          class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"\r
+        >\r
+          <a href="#">Our first project with React</a>\r
+        </h2>\r
+        <p class="mb-5 font-light text-gray-500 dark:text-gray-400">\r
+          Static websites are now used to bootstrap lots of websites and are\r
+          becoming the basis for a variety of tools that even influence both web\r
+          designers and developers influence both web designers and developers.\r
+        </p>\r
+        <div class="flex justify-between items-center">\r
+          <div class="flex items-center space-x-4">\r
+            <img\r
+              class="w-7 h-7 rounded-full"\r
+              src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"\r
+              alt="Bonnie Green avatar"\r
+            />\r
+            <span class="font-medium dark:text-white"> Bonnie Green </span>\r
+          </div>\r
+          <a\r
+            href="#"\r
+            class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline"\r
+          >\r
+            Read more\r
+            <svg\r
+              class="ml-2 w-4 h-4"\r
+              fill="currentColor"\r
+              viewBox="0 0 20 20"\r
+              xmlns="http://www.w3.org/2000/svg"\r
+            >\r
+              <path\r
+                fill-rule="evenodd"\r
+                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"\r
+                clip-rule="evenodd"\r
+              ></path>\r
+            </svg>\r
+          </a>\r
+        </div>\r
+      </article>\r
+    </div>\r
+  </div>\r
+</section>\r
+`,p=i.replace("VITE_LOGO_PLACEHOLDER",s),u=o.replace("VITE_LOGO_PLACEHOLDER",s),y=d.replace("YEAR_PLACEHOLDER",new Date().getFullYear());document.querySelector("#app").innerHTML=p;document.querySelector("#header").innerHTML=u;document.querySelector("#contact").innerHTML=g;document.querySelector("#footer").innerHTML=y;document.querySelector("#workExperience").innerHTML=c;document.querySelector("#services").innerHTML=m;document.querySelector("#projects").innerHTML=x;
