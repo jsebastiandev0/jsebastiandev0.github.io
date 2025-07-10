@@ -6,8 +6,9 @@ import mainTemplate from "./templates/main.html?raw";
 import headerTemplate from "./templates/header.html?raw";
 import footerTemplate from "./templates/footer.html?raw";
 import contactTemplate from "./templates/contact.html?raw";
-import aboutTemplate from "./templates/about.html?raw";
+import workExperienceTemplate from "./templates/workExperience.html?raw";
 import servicesTemplate from "./templates/services.html?raw";
+import projectsTemplate from "./templates/projects.html?raw";
 
 // Replace placeholders in templates
 // This is a simple example, you can use a more sophisticated templating engine if needed
@@ -24,6 +25,7 @@ document.querySelector("#app").innerHTML = mainHtml;
 document.querySelector("#header").innerHTML = headerHtml;
 document.querySelector("#contact").innerHTML = contactTemplate;
 document.querySelector("#footer").innerHTML = footerHtml;
-document.querySelector("#about").innerHTML = aboutTemplate;
+document.querySelector("#workExperience").innerHTML = workExperienceTemplate;
 document.querySelector("#services").innerHTML = servicesTemplate;
+document.querySelector("#projects").innerHTML = projectsTemplate;
 // Add any additional JavaScript functionality here
