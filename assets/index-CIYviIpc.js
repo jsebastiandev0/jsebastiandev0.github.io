@@ -2,6 +2,12 @@
   <div\r
     class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12"\r
   >\r
+    <div class="mt-8 lg:mt-0 lg:col-span-5 flex justify-center">\r
+      <img\r
+        src="https://png.pngtree.com/png-clipart/20231109/original/pngtree-programmer-it-developer-png-image_13520483.png"\r
+        alt="mockup"\r
+      />\r
+    </div>\r
     <div class="mr-auto place-self-center lg:col-span-7">\r
       <h1\r
         class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white"\r
@@ -11,7 +17,7 @@
       <p\r
         class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400"\r
       >\r
-        FullStack Developer | Solutions Architect | Systems Designer\r
+        FullStack Developer | Solutions Architect Enthusiast | Systems Designer\r
       </p>\r
       <a\r
         href="#"\r
@@ -37,12 +43,6 @@
       >\r
         Download CV\r
       </a>\r
-    </div>\r
-    <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">\r
-      <img\r
-        src="https://png.pngtree.com/png-clipart/20231109/original/pngtree-programmer-it-developer-png-image_13520483.png"\r
-        alt="mockup"\r
-      />\r
     </div>\r
   </div>\r
 </section>\r
