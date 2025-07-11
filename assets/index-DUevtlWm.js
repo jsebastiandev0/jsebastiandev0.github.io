@@ -3,12 +3,7 @@
     class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12"\r
   >\r
     <div class="mt-8 lg:mt-0 lg:col-span-5 flex justify-center">\r
-      <!-- <img\r
-        src="https://png.pngtree.com/png-clipart/20231109/original/pngtree-programmer-it-developer-png-image_13520483.png"\r
-        alt="mockup"\r
-      /> -->\r
-\r
-      <img src="./me_cover.png" alt="" srcset="" />\r
+      <img src="./me_cover.png" alt="mockup" />\r
     </div>\r
     <div class="mr-auto place-self-center lg:col-span-7">\r
       <h1\r
