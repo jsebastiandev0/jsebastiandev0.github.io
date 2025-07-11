@@ -3,10 +3,12 @@
     class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12"\r
   >\r
     <div class="mt-8 lg:mt-0 lg:col-span-5 flex justify-center">\r
-      <img\r
+      <!-- <img\r
         src="https://png.pngtree.com/png-clipart/20231109/original/pngtree-programmer-it-developer-png-image_13520483.png"\r
         alt="mockup"\r
-      />\r
+      /> -->\r
+\r
+      <img src="public\\me_cover.png" alt="" srcset="" />\r
     </div>\r
     <div class="mr-auto place-self-center lg:col-span-7">\r
       <h1\r
@@ -603,7 +605,7 @@
     </div>\r
   </div>\r
 </section>\r
-`,x=`<section class="bg-white dark:bg-gray-900">\r
+`,p=`<section class="bg-white dark:bg-gray-900">\r
   <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">\r
     <div class="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">\r
       <h2\r
@@ -806,4 +808,4 @@
     </div>\r
   </div>\r
 </section>\r
-`,p=i.replace("VITE_LOGO_PLACEHOLDER",s),u=o.replace("VITE_LOGO_PLACEHOLDER",s),y=d.replace("YEAR_PLACEHOLDER",new Date().getFullYear());document.querySelector("#app").innerHTML=p;document.querySelector("#header").innerHTML=u;document.querySelector("#contact").innerHTML=g;document.querySelector("#footer").innerHTML=y;document.querySelector("#workExperience").innerHTML=c;document.querySelector("#services").innerHTML=m;document.querySelector("#projects").innerHTML=x;
+`,x=i.replace("VITE_LOGO_PLACEHOLDER",s),u=o.replace("VITE_LOGO_PLACEHOLDER",s),y=d.replace("YEAR_PLACEHOLDER",new Date().getFullYear());document.querySelector("#app").innerHTML=x;document.querySelector("#header").innerHTML=u;document.querySelector("#contact").innerHTML=g;document.querySelector("#footer").innerHTML=y;document.querySelector("#workExperience").innerHTML=c;document.querySelector("#services").innerHTML=m;document.querySelector("#projects").innerHTML=p;
