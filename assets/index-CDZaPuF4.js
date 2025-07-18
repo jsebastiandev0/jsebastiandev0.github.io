@@ -1,4 +1,4 @@
-(function(){const n=document.createElement("link").relList;if(n&&n.supports&&n.supports("modulepreload"))return;for(const r of document.querySelectorAll('link[rel="modulepreload"]'))a(r);new MutationObserver(r=>{for(const e of r)if(e.type==="childList")for(const t of e.addedNodes)t.tagName==="LINK"&&t.rel==="modulepreload"&&a(t)}).observe(document,{childList:!0,subtree:!0});function l(r){const e={};return r.integrity&&(e.integrity=r.integrity),r.referrerPolicy&&(e.referrerPolicy=r.referrerPolicy),r.crossOrigin==="use-credentials"?e.credentials="include":r.crossOrigin==="anonymous"?e.credentials="omit":e.credentials="same-origin",e}function a(r){if(r.ep)return;r.ep=!0;const e=l(r);fetch(r.href,e)}})();const s=""+new URL("../vite.svg",import.meta.url).href,i=`<section class="bg-white dark:bg-gray-900">\r
+(function(){const n=document.createElement("link").relList;if(n&&n.supports&&n.supports("modulepreload"))return;for(const r of document.querySelectorAll('link[rel="modulepreload"]'))a(r);new MutationObserver(r=>{for(const e of r)if(e.type==="childList")for(const t of e.addedNodes)t.tagName==="LINK"&&t.rel==="modulepreload"&&a(t)}).observe(document,{childList:!0,subtree:!0});function i(r){const e={};return r.integrity&&(e.integrity=r.integrity),r.referrerPolicy&&(e.referrerPolicy=r.referrerPolicy),r.crossOrigin==="use-credentials"?e.credentials="include":r.crossOrigin==="anonymous"?e.credentials="omit":e.credentials="same-origin",e}function a(r){if(r.ep)return;r.ep=!0;const e=i(r);fetch(r.href,e)}})();const s=""+new URL("../vite.svg",import.meta.url).href,l=`<section class="bg-white dark:bg-gray-900">\r
   <div\r
     class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12"\r
   >\r
@@ -600,7 +600,7 @@
     </div>\r
   </div>\r
 </section>\r
-`,x=`<section class="bg-white dark:bg-gray-900">\r
+`,p=`<section class="bg-white dark:bg-gray-900">\r
   <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">\r
     <div class="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">\r
       <h2\r
@@ -617,7 +617,7 @@
       <article\r
         class="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"\r
       >\r
-        <div class="flex justify-between items-center mb-5 text-gray-500">\r
+        <!-- <div class="flex justify-between items-center mb-5 text-gray-500">\r
           <span\r
             class="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800"\r
           >\r
@@ -634,29 +634,38 @@
             Tutorial\r
           </span>\r
           <span class="text-sm">14 days ago</span>\r
-        </div>\r
+        </div> -->\r
         <h2\r
           class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"\r
         >\r
-          <a href="#">How to quickly deploy a static website</a>\r
+          <!-- <a href="#">How to quickly deploy a static website</a> -->\r
+          <a\r
+            href="javascript:void(0)"\r
+            onclick="window.open(window.location.origin + window.location.pathname + 'inventory-electronic-components', '_blank')"\r
+          >\r
+            Inventory of Electronic Components.\r
+          </a>\r
         </h2>\r
         <p class="mb-5 font-light text-gray-500 dark:text-gray-400">\r
-          Static websites are now used to bootstrap lots of websites and are\r
-          becoming the basis for a variety of tools that even influence both web\r
-          designers and developers influence both web designers and developers.\r
+          This application offers a solution for inventory management and\r
+          project planning involving the use of electronic components. It allows\r
+          for stock control, supplier management, bill of materials tracking,\r
+          and basic reporting. Its modular design and easy customization make it\r
+          easily adaptable to other storage-related contexts.\r
         </p>\r
         <div class="flex justify-between items-center">\r
-          <div class="flex items-center space-x-4">\r
+          <!-- <div class="flex items-center space-x-4">\r
             <img\r
               class="w-7 h-7 rounded-full"\r
               src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png"\r
               alt="Jese Leos avatar"\r
             />\r
             <span class="font-medium dark:text-white"> Jese Leos </span>\r
-          </div>\r
+          </div> -->\r
           <a\r
-            href="#"\r
-            class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline"\r
+            href="javascript:void(0)"\r
+            onclick="window.open(window.location.origin + window.location.pathname + 'inventory-electronic-components', '_blank')"\r
+            class="inline-flex items-center font-medium text-primary-600 dark:text-white hover:underline"\r
           >\r
             Read more\r
             <svg\r
@@ -803,4 +812,4 @@
     </div>\r
   </div>\r
 </section>\r
-`,p=i.replace("VITE_LOGO_PLACEHOLDER",s),u=o.replace("VITE_LOGO_PLACEHOLDER",s),y=d.replace("YEAR_PLACEHOLDER",new Date().getFullYear());document.querySelector("#app").innerHTML=p;document.querySelector("#header").innerHTML=u;document.querySelector("#contact").innerHTML=g;document.querySelector("#footer").innerHTML=y;document.querySelector("#workExperience").innerHTML=c;document.querySelector("#services").innerHTML=m;document.querySelector("#projects").innerHTML=x;
+`,x=l.replace("VITE_LOGO_PLACEHOLDER",s),u=o.replace("VITE_LOGO_PLACEHOLDER",s),y=d.replace("YEAR_PLACEHOLDER",new Date().getFullYear());document.querySelector("#app").innerHTML=x;document.querySelector("#header").innerHTML=u;document.querySelector("#contact").innerHTML=g;document.querySelector("#footer").innerHTML=y;document.querySelector("#workExperience").innerHTML=c;document.querySelector("#services").innerHTML=m;document.querySelector("#projects").innerHTML=p;
