@@ -4,31 +4,22 @@
 /* Custom styles */
 :root {
     --background-color: #000;
-    --border-color: #00f;
+    --font-color: #e2e2e2;
+    --primary-color: rgb(215, 15, 241);
 }
 
-a {
-    color: #0f0;
-    text-decoration: none;
-}
-
-#ascii-art-container {
+body #ascii-art-container {
     font-family: monospace;
     white-space: pre;
-    color: #0f0;
+    color: var(--font-color);
 }
 
-.text,
-li,
-h2,
-h1,
-form {
-    color: #ccc4c4;
+.component-container {
+    margin: 2em 0;
 }
 
-#terminal {
-    background-color: var(--background-color);
-    border: 1px solid var(--border-color);
-    padding: 10px;
-    font-family: monospace;
+.button-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5em;
 }

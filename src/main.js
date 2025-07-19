@@ -20,9 +20,9 @@ const asciiArt = String.raw`
 
               Software Engineer | Full-Stack Developer | Software Architect Enthusiast`;
 
-
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("app").innerHTML = main;
+
     // add components to the app
     document.getElementById("navbar").innerHTML = navbar;
     document.getElementById("about").innerHTML = about;
@@ -40,4 +40,20 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+// Function to open a simple dialog 
+window.openSimpleDialog = function openSimpleDialog() {
+    const dialog = document.getElementById('simpleDialog');
+    dialog.showModal();
+}
 
+window.closeDialog = function closeDialog(dialogId) {
+    const dialog = document.getElementById(dialogId);
+    dialog.close();
+}
+
+window.scrollToTop = function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
