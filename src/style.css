@@ -1,2 +1,8 @@
-/* @import "tailwindcss"; */
 @import "terminal.css";
+
+/* Custom styles */
+
+:root {
+    --background-color: #1f201f;
+    --font-color: #f0f0f0;
+}
