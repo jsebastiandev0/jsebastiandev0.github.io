@@ -1,3 +1,34 @@
 @import "terminal.css";
 
+
 /* Custom styles */
+:root {
+    --background-color: #000;
+    --border-color: #00f;
+}
+
+a {
+    color: #0f0;
+    text-decoration: none;
+}
+
+#ascii-art-container {
+    font-family: monospace;
+    white-space: pre;
+    color: #0f0;
+}
+
+.text,
+li,
+h2,
+h1,
+form {
+    color: #ccc4c4;
+}
+
+#terminal {
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    font-family: monospace;
+}

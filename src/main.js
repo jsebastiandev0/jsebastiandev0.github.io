@@ -33,9 +33,11 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("contact").innerHTML = contact;
     document.getElementById("footer").innerHTML = footer;
 
-    const container = document.getElementById('ascii-container');
+    const container = document.getElementById('ascii-art-container');
     if (container) {
         container.textContent = asciiArt;
     }
 });
+
+
 
