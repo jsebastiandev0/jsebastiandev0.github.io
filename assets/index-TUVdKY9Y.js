@@ -1,6 +1,6 @@
-(function(){const i=document.createElement("link").relList;if(i&&i.supports&&i.supports("modulepreload"))return;for(const n of document.querySelectorAll('link[rel="modulepreload"]'))a(n);new MutationObserver(n=>{for(const e of n)if(e.type==="childList")for(const t of e.addedNodes)t.tagName==="LINK"&&t.rel==="modulepreload"&&a(t)}).observe(document,{childList:!0,subtree:!0});function o(n){const e={};return n.integrity&&(e.integrity=n.integrity),n.referrerPolicy&&(e.referrerPolicy=n.referrerPolicy),n.crossOrigin==="use-credentials"?e.credentials="include":n.crossOrigin==="anonymous"?e.credentials="omit":e.credentials="same-origin",e}function a(n){if(n.ep)return;n.ep=!0;const e=o(n);fetch(n.href,e)}})();const s=`<div class="container">\r
+(function(){const i=document.createElement("link").relList;if(i&&i.supports&&i.supports("modulepreload"))return;for(const n of document.querySelectorAll('link[rel="modulepreload"]'))o(n);new MutationObserver(n=>{for(const e of n)if(e.type==="childList")for(const t of e.addedNodes)t.tagName==="LINK"&&t.rel==="modulepreload"&&o(t)}).observe(document,{childList:!0,subtree:!0});function a(n){const e={};return n.integrity&&(e.integrity=n.integrity),n.referrerPolicy&&(e.referrerPolicy=n.referrerPolicy),n.crossOrigin==="use-credentials"?e.credentials="include":n.crossOrigin==="anonymous"?e.credentials="omit":e.credentials="same-origin",e}function o(n){if(n.ep)return;n.ep=!0;const e=a(n);fetch(n.href,e)}})();const s=`<div class="container">\r
     <div id="navbar"></div>\r
-    <div id="ascii-art-container"></div>\r
+    <div id="ascii-art-container" style="color: var(--primary-color)"></div>\r
     <div id="about"></div>\r
     <div id="skills"></div>\r
     <div id="projects"></div>\r
@@ -8,10 +8,11 @@
     <div id="blog"></div>\r
     <div id="contact"></div>\r
     <div id="footer"></div>\r
-</div>`,l=`<div class="component-container">\r
+</div>`,l=`<br>\r
+<div class="about-container">\r
     <h3 class="terminal-prompt">root@jsebastiandev:~$\r
         <span style="color: var(--primary-color)">\r
-            About Me...\r
+            About Me\r
         </span>\r
     </h3>\r
     <blockquote>\r
@@ -53,9 +54,7 @@
             </fieldset>\r
         </form>\r
     </section>\r
-</div>\r
-\r
-<br>`,m=`<div class="container">\r
+</div>`,m=`<div class="container">\r
     <div class="terminal-nav">\r
         <header class="terminal-logo">\r
             <div class="logo"><a href="/" class="no-style">root@JSebastianDev</a></div>\r
@@ -198,7 +197,19 @@
         </div>\r
     </div>\r
     <br />\r
-</section> -->`,g="",b=String.raw`
+</section> -->`,g=`<details>\r
+    <summary>Información Adicional</summary>\r
+    <div class="details-content">\r
+        <h4>¿Sabías que...?</h4>\r
+        <p>El elemento <code>&lt;details&gt;</code> funciona completamente sin JavaScript y es ideal para\r
+            FAQ, menús desplegables y contenido opcional.</p>\r
+        <ul>\r
+            <li>✅ Accesible por defecto</li>\r
+            <li>✅ SEO friendly</li>\r
+            <li>✅ Sin dependencias</li>\r
+        </ul>\r
+    </div>\r
+</details>`,b=String.raw`
       ██╗███████╗███████╗██████╗  █████╗ ███████╗████████╗██╗ █████╗ ███╗   ██╗    ██████╗ ███████╗██╗   ██╗
       ██║██╔════╝██╔════╝██╔══██╗██╔══██╗██╔════╝╚══██╔══╝██║██╔══██╗████╗  ██║    ██╔══██╗██╔════╝██║   ██║
       ██║███████╗█████╗  ██████╔╝███████║███████╗   ██║   ██║███████║██╔██╗ ██║    ██║  ██║█████╗  ██║   ██║
