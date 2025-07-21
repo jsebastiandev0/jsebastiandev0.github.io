@@ -197,19 +197,7 @@
         </div>\r
     </div>\r
     <br />\r
-</section> -->`,g=`<details>\r
-    <summary>Información Adicional</summary>\r
-    <div class="details-content">\r
-        <h4>¿Sabías que...?</h4>\r
-        <p>El elemento <code>&lt;details&gt;</code> funciona completamente sin JavaScript y es ideal para\r
-            FAQ, menús desplegables y contenido opcional.</p>\r
-        <ul>\r
-            <li>✅ Accesible por defecto</li>\r
-            <li>✅ SEO friendly</li>\r
-            <li>✅ Sin dependencias</li>\r
-        </ul>\r
-    </div>\r
-</details>`,b=String.raw`
+</section> -->`,g=String.raw`
       ██╗███████╗███████╗██████╗  █████╗ ███████╗████████╗██╗ █████╗ ███╗   ██╗    ██████╗ ███████╗██╗   ██╗
       ██║██╔════╝██╔════╝██╔══██╗██╔══██╗██╔════╝╚══██╔══╝██║██╔══██╗████╗  ██║    ██╔══██╗██╔════╝██║   ██║
       ██║███████╗█████╗  ██████╔╝███████║███████╗   ██║   ██║███████║██╔██╗ ██║    ██║  ██║█████╗  ██║   ██║
@@ -217,4 +205,4 @@
  ╚█████╔╝███████║███████╗██████╔╝██║  ██║███████║   ██║   ██║██║  ██║██║ ╚████║    ██████╔╝███████╗ ╚████╔╝ 
   ╚════╝ ╚══════╝╚══════╝╚═════╝ ╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝    ╚═════╝ ╚══════╝  ╚═══╝  
 
-              Software Engineer | Full-Stack Developer | Software Architect Enthusiast`;document.addEventListener("DOMContentLoaded",function(){document.getElementById("app").innerHTML=s,document.getElementById("navbar").innerHTML=m,document.getElementById("about").innerHTML=l,document.getElementById("skills").innerHTML=u,document.getElementById("projects").innerHTML=p,document.getElementById("workExperience").innerHTML=v,document.getElementById("blog").innerHTML=c,document.getElementById("contact").innerHTML=d,document.getElementById("footer").innerHTML=g;const r=document.getElementById("ascii-art-container");r&&(r.textContent=b)});window.openSimpleDialog=function(){document.getElementById("simpleDialog").showModal()};window.closeDialog=function(i){document.getElementById(i).close()};window.scrollToTop=function(){window.scrollTo({top:0,behavior:"smooth"})};
+              Software Engineer | Full-Stack Developer | Software Architect Enthusiast`;document.addEventListener("DOMContentLoaded",function(){document.getElementById("app").innerHTML=s,document.getElementById("navbar").innerHTML=m,document.getElementById("about").innerHTML=l,document.getElementById("skills").innerHTML=u,document.getElementById("projects").innerHTML=p,document.getElementById("workExperience").innerHTML=v,document.getElementById("blog").innerHTML=c,document.getElementById("contact").innerHTML=d;const r=document.getElementById("ascii-art-container");r&&(r.textContent=g)});window.openSimpleDialog=function(){document.getElementById("simpleDialog").showModal()};window.closeDialog=function(i){document.getElementById(i).close()};window.scrollToTop=function(){window.scrollTo({top:0,behavior:"smooth"})};
