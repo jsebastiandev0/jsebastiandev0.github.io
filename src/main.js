@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("workExperience").innerHTML = workExperience;
     document.getElementById("blog").innerHTML = blog;
     document.getElementById("contact").innerHTML = contact;
-    document.getElementById("footer").innerHTML = footer;
+    // document.getElementById("footer").innerHTML = footer;
 
     const container = document.getElementById('ascii-art-container');
     if (container) {
