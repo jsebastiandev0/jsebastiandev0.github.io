@@ -7,7 +7,7 @@
     <div id="workExperience"></div>\r
     <div id="blog"></div>\r
     <div id="contact"></div>\r
-    <div id="footer"></div>\r
+    <!-- <div id="footer"></div> -->\r
 </div>`,l=`<br>\r
 <div class="about-container">\r
     <h3 class="terminal-prompt">root@jsebastiandev:~$\r
