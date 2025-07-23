@@ -7,4 +7,7 @@ export default defineConfig({
     outDir: "dist",
   },
   // plugins: [tailwindcss()],
+  server: {
+    host: true, // for access from other devices in the network
+  },
 });
