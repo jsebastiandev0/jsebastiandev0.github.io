@@ -16,6 +16,7 @@
     <div class=" subtitle-container">\r
         <span class="subtitle">Software Engineer | Full-Stack Developer | Software Architect Enthusiast</span>\r
     </div>\r
+    <br><br><br>\r
     <div class="menu-button-container">\r
         <button class="menu-button">About</button>\r
         <button class="menu-button">Projects</button>\r
@@ -29,17 +30,16 @@
       ██║███████╗█████╗  ██████╔╝███████║███████╗   ██║   ██║███████║██╔██╗ ██║    ██║  ██║█████╗  ██║   ██║
  ██   ██║╚════██║██╔══╝  ██╔══██╗██╔══██║╚════██║   ██║   ██║██╔══██║██║╚██╗██║    ██║  ██║██╔══╝  ╚██╗ ██╔╝
  ╚█████╔╝███████║███████╗██████╔╝██║  ██║███████║   ██║   ██║██║  ██║██║ ╚████║    ██████╔╝███████╗ ╚████╔╝ 
-  ╚════╝ ╚══════╝╚══════╝╚═════╝ ╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝    ╚═════╝ ╚══════╝  ╚═══╝ `,a=String.raw`
+  ╚════╝ ╚══════╝╚══════╝╚═════╝ ╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝    ╚═════╝ ╚══════╝  ╚═══╝  `,a=String.raw`
       ██╗███████╗███████╗██████╗  █████╗ ███████╗████████╗██╗ █████╗ ███╗   ██╗
       ██║██╔════╝██╔════╝██╔══██╗██╔══██╗██╔════╝╚══██╔══╝██║██╔══██╗████╗  ██║
       ██║███████╗█████╗  ██████╔╝███████║███████╗   ██║   ██║███████║██╔██╗ ██║
  ██   ██║╚════██║██╔══╝  ██╔══██╗██╔══██║╚════██║   ██║   ██║██╔══██║██║╚██╗██║
  ╚█████╔╝███████║███████╗██████╔╝██║  ██║███████║   ██║   ██║██║  ██║██║ ╚████║ 
   ╚════╝ ╚══════╝╚══════╝╚═════╝ ╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝
-        ██████╗ ███████╗██╗   ██╗
-        ██╔══██╗██╔════╝██║   ██║
-        ██║  ██║█████╗  ██║   ██║
-        ██║  ██║██╔══╝  ╚██╗ ██╔╝
-        ██████╔╝███████╗ ╚████╔╝ 
-        ╚═════╝ ╚══════╝  ╚═══╝ 
-  `;function c(){const e=document.getElementById("ascii-art-container");e&&(window.innerWidth<=768?e.textContent=a:e.textContent=l)}window.addEventListener("resize",c);document.addEventListener("DOMContentLoaded",function(){document.getElementById("app").innerHTML=d,c()});window.openSimpleDialog=function(){document.getElementById("simpleDialog").showModal()};window.closeDialog=function(o){document.getElementById(o).close()};window.scrollToTop=function(){window.scrollTo({top:0,behavior:"smooth"})};
+   ██████╗ ███████╗██╗   ██╗
+   ██╔══██╗██╔════╝██║   ██║
+   ██║  ██║█████╗  ██║   ██║
+   ██║  ██║██╔══╝  ╚██╗ ██╔╝
+   ██████╔╝███████╗ ╚████╔╝ 
+   ╚═════╝ ╚══════╝  ╚═══╝   `;function c(){const e=document.getElementById("ascii-art-container");e&&(window.innerWidth<=768?e.textContent=a:e.textContent=l)}window.addEventListener("resize",c);document.addEventListener("DOMContentLoaded",function(){document.getElementById("app").innerHTML=d,c()});window.openSimpleDialog=function(){document.getElementById("simpleDialog").showModal()};window.closeDialog=function(o){document.getElementById(o).close()};window.scrollToTop=function(){window.scrollTo({top:0,behavior:"smooth"})};
