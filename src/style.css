@@ -35,7 +35,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid var(--primary-color);
+    border: 5px double var(--primary-color);
     padding: 20px;
     flex-direction: column;
     min-height: 70vh;
@@ -86,7 +86,7 @@
         vertical-align: middle;
         text-align: center;
         min-height: 60vh;
-        margin-top: 20vh;
+        margin-top: 10vh;
     }
 
     .menu-button-container {
@@ -95,7 +95,7 @@
     }
 
     #ascii-art-container {
-        font-size: 0.4em;
+        font-size: 0.55em;
         white-space: pre;
         text-align: center;
     }
@@ -103,5 +103,4 @@
     .subtitle {
         font-size: 1em;
     }
-
 }

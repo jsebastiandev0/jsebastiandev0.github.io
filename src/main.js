@@ -18,8 +18,39 @@ const asciiArt = String.raw`
  ╚█████╔╝███████║███████╗██████╔╝██║  ██║███████║   ██║   ██║██║  ██║██║ ╚████║    ██████╔╝███████╗ ╚████╔╝ 
   ╚════╝ ╚══════╝╚══════╝╚═════╝ ╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝    ╚═════╝ ╚══════╝  ╚═══╝ `;
 
+
+
+const asciiArt2 = String.raw`
+      ██╗███████╗███████╗██████╗  █████╗ ███████╗████████╗██╗ █████╗ ███╗   ██╗
+      ██║██╔════╝██╔════╝██╔══██╗██╔══██╗██╔════╝╚══██╔══╝██║██╔══██╗████╗  ██║
+      ██║███████╗█████╗  ██████╔╝███████║███████╗   ██║   ██║███████║██╔██╗ ██║
+ ██   ██║╚════██║██╔══╝  ██╔══██╗██╔══██║╚════██║   ██║   ██║██╔══██║██║╚██╗██║
+ ╚█████╔╝███████║███████╗██████╔╝██║  ██║███████║   ██║   ██║██║  ██║██║ ╚████║ 
+  ╚════╝ ╚══════╝╚══════╝╚═════╝ ╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝
+        ██████╗ ███████╗██╗   ██╗
+        ██╔══██╗██╔════╝██║   ██║
+        ██║  ██║█████╗  ██║   ██║
+        ██║  ██║██╔══╝  ╚██╗ ██╔╝
+        ██████╔╝███████╗ ╚████╔╝ 
+        ╚═════╝ ╚══════╝  ╚═══╝ 
+  `;
+
+function setAsciiArt() {
+    const container = document.getElementById('ascii-art-container');
+    if (container) {
+        if (window.innerWidth <= 768) {
+            container.textContent = asciiArt2;
+        } else {
+            container.textContent = asciiArt;
+        }
+    }
+}
+
+window.addEventListener('resize', setAsciiArt);
+
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("app").innerHTML = main;
+    setAsciiArt();
 
     // add components to the app
     // document.getElementById("navbar").innerHTML = navbar;
@@ -30,11 +61,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // document.getElementById("blog").innerHTML = blog;
     // document.getElementById("contact").innerHTML = contact;
     // document.getElementById("footer").innerHTML = footer;
-
-    const container = document.getElementById('ascii-art-container');
-    if (container) {
-        container.textContent = asciiArt;
-    }
 });
 
 
