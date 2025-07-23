@@ -16,21 +16,19 @@ const asciiArt = String.raw`
       ██║███████╗█████╗  ██████╔╝███████║███████╗   ██║   ██║███████║██╔██╗ ██║    ██║  ██║█████╗  ██║   ██║
  ██   ██║╚════██║██╔══╝  ██╔══██╗██╔══██║╚════██║   ██║   ██║██╔══██║██║╚██╗██║    ██║  ██║██╔══╝  ╚██╗ ██╔╝
  ╚█████╔╝███████║███████╗██████╔╝██║  ██║███████║   ██║   ██║██║  ██║██║ ╚████║    ██████╔╝███████╗ ╚████╔╝ 
-  ╚════╝ ╚══════╝╚══════╝╚═════╝ ╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝    ╚═════╝ ╚══════╝  ╚═══╝  
-
-              Software Engineer | Full-Stack Developer | Software Architect Enthusiast`;
+  ╚════╝ ╚══════╝╚══════╝╚═════╝ ╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝    ╚═════╝ ╚══════╝  ╚═══╝ `;
 
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("app").innerHTML = main;
 
     // add components to the app
-    document.getElementById("navbar").innerHTML = navbar;
-    document.getElementById("about").innerHTML = about;
-    document.getElementById("skills").innerHTML = skills;
-    document.getElementById("projects").innerHTML = projects;
-    document.getElementById("workExperience").innerHTML = workExperience;
-    document.getElementById("blog").innerHTML = blog;
-    document.getElementById("contact").innerHTML = contact;
+    // document.getElementById("navbar").innerHTML = navbar;
+    // document.getElementById("about").innerHTML = about;
+    // document.getElementById("skills").innerHTML = skills;
+    // document.getElementById("projects").innerHTML = projects;
+    // document.getElementById("workExperience").innerHTML = workExperience;
+    // document.getElementById("blog").innerHTML = blog;
+    // document.getElementById("contact").innerHTML = contact;
     // document.getElementById("footer").innerHTML = footer;
 
     const container = document.getElementById('ascii-art-container');
