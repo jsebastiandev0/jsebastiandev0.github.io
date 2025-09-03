@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && cp CNAME dist/",
+    "build": "vite build && copy CNAME dist\\",
     "preview": "vite preview",
     "deploy": "npm run build && gh-pages -d dist"
   },
