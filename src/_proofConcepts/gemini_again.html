@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SYSTEM OPERATOR // RETRO MOBILE</title>
+    <style>
+        /* --- FUENTES Y RESET --- */
+        @import url('https://fonts.googleapis.com/css2?family=VT323&family=Fira+Code:wght@400;700&display=swap');
+
+        :root {
+            --crt-green: #39ff14;
+            --crt-dark-green: #0f4d05;
+            --crt-bg: #111;
+            --crt-glow: 0 0 5px var(--crt-green), 0 0 10px var(--crt-green);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* --- CONTENEDOR PRINCIPAL (SIN SCROLL) --- */
+        html, body {
+            height: 100%;
+            width: 100%;
+            background-color: var(--crt-bg);
+            overflow: hidden; /* CRÍTICO: Evita cualquier scroll */
+            font-family: 'Fira Code', 'VT323', monospace;
+            color: var(--crt-green);
+            /* Previene zoom en iOS al hacer doble tap */
+            touch-action: manipulation;
+        }
+
+        /* --- PANTALLA CRT Y EFECTOS --- */
+        .crt-screen {
+            position: relative;
+            width: 100vw;
+            /* Usa dvh para adaptarse a las barras de navegación móviles dinámicas */
+            height: 100dvh; 
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-shadow: var(--crt-glow);
+        }
+
+        /* Líneas de escaneo superpuestas */
+        .crt-screen::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                rgba(18, 16, 16, 0) 50%,
+                rgba(0, 0, 0, 0.25) 50%
+            );
+            background-size: 100% 4px;
+            z-index: 10;
+            pointer-events: none; /* Permite clicks a través de las líneas */
+        }
+
+        /* --- TIPOGRAFÍA Y COMPONENTES --- */
+        h1, h2, h3 {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Estilo de los botones "retro" */
+        .retro-btn {
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            padding: 15px;
+            margin: 10px auto;
+            background: transparent;
+            border: 2px solid var(--crt-green);
+            color: var(--crt-green);
+            font-family: inherit;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            text-shadow: inherit;
+            position: relative;
+            transition: all 0.1s ease;
+        }
+
+        .retro-btn:active {
+            background: var(--crt-green);
+            color: var(--crt-bg);
+            text-shadow: none;
+        }
+
+        /* Decoración estilo consola para los botones */
+        .btn-brackets::before { content: '[ '; }
+        .btn-brackets::after { content: ' ]'; }
+
+        /* --- LAYOUT DEL MENÚ PRINCIPAL --- */
+        #main-menu-container {
+            text-align: center;
+            width: 100%;
+            transition: opacity 0.3s ease;
+        }
+
+        .menu-header {
+            margin-bottom: 40px;
+        }
+        .blink-cursor {
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* --- MODALES (OVERLAYS) --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100dvh;
+            /* Fondo oscuro semi-transparente para tapar el menú */
+            background-color: rgba(17, 17, 17, 0.95);
+            z-index: 20;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            /* Oculto por defecto */
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Clase activa para mostrar el modal */
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Caja de contenido del modal */
+        .modal-box {
+            width: 100%;
+            max-width: 400px;
+            border: 2px solid var(--crt-green);
+            background-color: var(--crt-bg); /* Fondo sólido para el contenido */
+            padding: 20px;
+            position: relative;
+            box-shadow: 0 0 15px var(--crt-dark-green);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 2px dashed var(--crt-green);
+            padding-bottom: 10px;
+        }
+
+        .close-btn {
+            border: none;
+            background: none;
+            color: var(--crt-green);
+            font-family: inherit;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        /* Contenido específico del mockup */
+        .ascii-skull {
+            font-family: monospace;
+            white-space: pre;
+            text-align: center;
+            line-height: 1;
+            margin-bottom: 20px;
+            font-size: 12px; /* Ajustado para móvil */
+        }
+
+        .user-data p {
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        .highlight { font-weight: bold; }
+
+    </style>
+</head>
+<body>
+
+<div class="crt-screen">
+
+    <main id="main-menu-container">
+        <div class="menu-header">
+            <h1>BOOT_SEQUENCE_INIT...</h1>
+            <p>> SYSTEM READY. AWAITING INPUT<span class="blink-cursor">_</span></p>
+        </div>
+        
+        <nav>
+            <button class="retro-btn btn-brackets js-open-modal" data-target="modal-about">SOBRE MI</button>
+            <button class="retro-btn btn-brackets js-open-modal" data-target="modal-projects">PROYECTOS</button>
+            <button class="retro-btn btn-brackets js-open-modal" data-target="modal-contact">CONTACTO</button>
+            <button class="retro-btn btn-brackets" onclick="alert('SYSTEM HALTED.')">SALIR</button>
+        </nav>
+    </main>
+
+
+    <div id="modal-about" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>// USUARIO_DETECTADO</h3>
+                <button class="close-btn js-close-modal">[X]</button>
+            </div>
+            
+            <div class="modal-content">
+                <div class="ascii-skull">
+    .ed"""" """$$$$be.
+  -"           ^""**$$$e.
+."                   '$$$c
+/                      "4$$b
+d  3                      $$$$
+$  * .$$$$$$
+.$  ^c           $$$$$e$$$$$$$$.
+d$L  4.         4$$$$$$$$$$$$$$b
+$$$$b ^ceeeee.  4$$ECL.F*$$$$$$$
+$$$$P d$$$$F $ $$$$$$$$$- $$$$$$
+3$$$F "$$$$b   $"$$$$$$$  $$$$*"
+ $$P"  "$$b   .$ $$$$$...e$$
+  *c    ..    $$ 3$$$$$$$$$$eF
+    %ce""    $$$  $$$$$$$$$$*
+     *$e.    *** d$$$$$"L$$
+      $$$c      4$$$$$$c$F
+      "$$$$$$$$$$$$$$$$"
+                </div>
+                <div class="user-data">
+                    <p><span class="highlight">USER:</span> ALAN TURING</p>
+                    <p><span class="highlight">ROLE:</span> CRYPTOCRACKER</p>
+                    <br>
+                    <p>> DESCIFRANDO CÓDIGOS DESDE 1940. ESPECIALISTA EN MÁQUINAS ENIGMA Y LÓGICA COMPUTACIONAL. NO SOY UN ROBOT, AUNQUE A VECES LO PAREZCA.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-projects" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>// DIRECTORIO_PROYECTOS</h3>
+                <button class="close-btn js-close-modal">[X]</button>
+            </div>
+            <div class="modal-content">
+                <p>> ACCEDIENDO A LA BASE DE DATOS...</p>
+                <p>> ERROR 404: PROYECTOS NO ENCONTRADOS EN ESTE SECTOR DE MEMORIA.</p>
+                <br>
+                <button class="retro-btn btn-brackets">REINTENTAR</button>
+            </div>
+        </div>
+    </div>
+
+     <div id="modal-contact" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>// FRECUENCIA_COMMS</h3>
+                <button class="close-btn js-close-modal">[X]</button>
+            </div>
+            <div class="modal-content">
+                <p>> INICIANDO TRANSMISIÓN ENCRIPTADA...</p>
+                <p>> EMAIL: <span class="highlight">OPERATOR@ENIGMA.NET</span></p>
+                <p>> PGP KEY: <span class="highlight">0xDEADBEEF</span></p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // --- LÓGICA SIMPLE PARA MODALES ---
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const openButtons = document.querySelectorAll('.js-open-modal');
+        const closeButtons = document.querySelectorAll('.js-close-modal');
+        const mainMenu = document.getElementById('main-menu-container');
+
+        // Función para abrir modal
+        openButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetId = btn.getAttribute('data-target');
+                const targetModal = document.getElementById(targetId);
+                
+                if (targetModal) {
+                    // Opcional: desvanecer el menú principal un poco
+                    mainMenu.style.opacity = '0.3';
+                    targetModal.classList.add('active');
+                }
+            });
+        });
+
+        // Función para cerrar modal
+        closeButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Encuentra el modal padre más cercano
+                const modalOverlay = btn.closest('.modal-overlay');
+                if (modalOverlay) {
+                    modalOverlay.classList.remove('active');
+                    // Restaurar opacidad del menú
+                    mainMenu.style.opacity = '1';
+                }
+            });
+        });
+
+        // Opcional: Cerrar al hacer click fuera de la caja del modal (en el overlay oscuro)
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    overlay.classList.remove('active');
+                    mainMenu.style.opacity = '1';
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
