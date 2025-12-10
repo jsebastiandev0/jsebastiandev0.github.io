@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RetroOS v1.0</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #000;
+            color: #0f0;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 255, 0, 0.03) 0px,
+                transparent 1px,
+                transparent 2px,
+                rgba(0, 255, 0, 0.03) 3px
+            );
+            z-index: 9999;
+        }
+
+        .crt-effect {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+            z-index: 9998;
+        }
+
+        .header {
+            background: #0a0a0a;
+            border-bottom: 2px solid #0f0;
+            padding: 8px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+        }
+
+        .header h1 {
+            font-size: 18px;
+            text-shadow: 0 0 5px #0f0;
+            animation: flicker 3s infinite;
+        }
+
+        .header .time {
+            font-size: 14px;
+            text-shadow: 0 0 5px #0f0;
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.95; }
+        }
+
+        .desktop {
+            flex: 1;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 100px);
+            grid-auto-rows: 100px;
+            gap: 20px;
+            align-content: start;
+        }
+
+        .icon {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .icon:hover {
+            border: 2px solid #0f0;
+            background: rgba(0, 255, 0, 0.1);
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+        }
+
+        .icon-img {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 8px;
+            text-shadow: 0 0 5px #0f0;
+        }
+
+        .icon-label {
+            font-size: 12px;
+            text-align: center;
+            text-shadow: 0 0 3px #0f0;
+        }
+
+        .window {
+            position: fixed;
+            background: #000;
+            border: 3px solid #0f0;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+            display: none;
+            flex-direction: column;
+            z-index: 1000;
+        }
+
+        .window.active {
+            display: flex;
+        }
+
+        .window-header {
+            background: #0f0;
+            color: #000;
+            padding: 8px 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: move;
+            font-weight: bold;
+        }
+
+        .window-close {
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 0 8px;
+        }
+
+        .window-close:hover {
+            background: #000;
+            color: #0f0;
+        }
+
+        .window-content {
+            padding: 20px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .window-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .window-content::-webkit-scrollbar-track {
+            background: #000;
+        }
+
+        .window-content::-webkit-scrollbar-thumb {
+            background: #0f0;
+            border: 1px solid #000;
+        }
+
+        .terminal-line {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .terminal-prompt {
+            color: #0f0;
+            text-shadow: 0 0 3px #0f0;
+        }
+
+        .terminal-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 14px;
+            background: #0f0;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+
+        .footer {
+            background: #0a0a0a;
+            border-top: 2px solid #0f0;
+            padding: 8px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+        }
+
+        .taskbar-btn {
+            padding: 6px 12px;
+            border: 2px solid #0f0;
+            background: #000;
+            color: #0f0;
+            cursor: pointer;
+            margin-right: 10px;
+            text-shadow: 0 0 3px #0f0;
+            transition: all 0.2s;
+        }
+
+        .taskbar-btn:hover {
+            background: #0f0;
+            color: #000;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            border: 2px solid #0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .gallery-item:hover {
+            background: rgba(0, 255, 0, 0.2);
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+        }
+
+        .ascii-art {
+            font-size: 10px;
+            line-height: 1;
+            white-space: pre;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="scanlines"></div>
+    <div class="crt-effect"></div>
+
+    <div class="header">
+        <h1>▶ RETRO_OS v1.0</h1>
+        <div class="time" id="clock">00:00:00</div>
+    </div>
+
+    <div class="desktop">
+        <div class="icon" onclick="openWindow('about')">
+            <div class="icon-img">ℹ</div>
+            <div class="icon-label">ABOUT.exe</div>
+        </div>
+
+        <div class="icon" onclick="openWindow('terminal')">
+            <div class="icon-img">▣</div>
+            <div class="icon-label">TERMINAL.exe</div>
+        </div>
+
+        <div class="icon" onclick="openWindow('files')">
+            <div class="icon-img">▤</div>
+            <div class="icon-label">FILES.exe</div>
+        </div>
+
+        <div class="icon" onclick="openWindow('gallery')">
+            <div class="icon-img">◈</div>
+            <div class="icon-label">GALLERY.exe</div>
+        </div>
+
+        <div class="icon" onclick="openWindow('system')">
+            <div class="icon-img">⚙</div>
+            <div class="icon-label">SYSTEM.exe</div>
+        </div>
+    </div>
+
+    <!-- VENTANA ABOUT -->
+    <div class="window" id="about" style="width: 500px; height: 400px; top: 15%; left: 20%;">
+        <div class="window-header">
+            <span>ABOUT.exe</span>
+            <span class="window-close" onclick="closeWindow('about')">✕</span>
+        </div>
+        <div class="window-content">
+            <div class="ascii-art">
+ ____  _____ _____ ____   ___    ___  ____  
+|  _ \| ____|_   _|  _ \ / _ \  / _ \/ ___| 
+| |_) |  _|   | | | |_) | | | || | | \___ \ 
+|  _ <| |___  | | |  _ <| |_| || |_| |___) |
+|_| \_\_____| |_| |_| \_\\___/  \___/|____/ 
+            </div>
+            <div class="terminal-line">
+                <span class="terminal-prompt">></span> Sistema Operativo Retro v1.0
+            </div>
+            <div class="terminal-line">
+                <span class="terminal-prompt">></span> Build: 19851101
+            </div>
+            <div class="terminal-line">
+                <span class="terminal-prompt">></span> Arquitectura: CRT-16bit
+            </div>
+            <br>
+            <div class="terminal-line">
+                <span class="terminal-prompt">></span> Memoria disponible: 640KB
+            </div>
+            <div class="terminal-line">
+                <span class="terminal-prompt">></span> Procesador: 8088 @ 4.77MHz
+            </div>
+            <div class="terminal-line">
+                <span class="terminal-prompt">></span> Gráficos: Monocromo CGA
+            </div>
+            <br>
+            <div class="terminal-line">
+                <span class="terminal-prompt">></span> (C) 2025 RetroSystems Corp.
+            </div>
+        </div>
+    </div>
+
+    <!-- VENTANA TERMINAL -->
+    <div class="window" id="terminal" style="width: 600px; height: 400px; top: 20%; left: 25%;">
+        <div class="window-header">
+            <span>TERMINAL.exe</span>
+            <span class="window-close" onclick="closeWindow('terminal')">✕</span>
+        </div>
+        <div class="window-content">
+            <div class="terminal-line">RetroOS Terminal v1.0</div>
+            <div class="terminal-line">Copyright (C) RetroSystems Corp.</div>
+            <div class="terminal-line">═══════════════════════════════════════</div>
+            <br>
+            <div class="terminal-line">
+                <span class="terminal-prompt">C:\></span> dir
+            </div>
+            <div class="terminal-line">Volume in drive C is RETRO_OS</div>
+            <div class="terminal-line">Directory of C:\</div>
+            <br>
+            <div class="terminal-line">SYSTEM      DIR     01-01-85   12:00a</div>
+            <div class="terminal-line">PROGRAMS    DIR     01-01-85   12:00a</div>
+            <div class="terminal-line">DOCS        DIR     01-01-85   12:00a</div>
+            <div class="terminal-line">README  TXT    2,048 01-01-85   12:00a</div>
+            <div class="terminal-line">CONFIG  SYS      256 01-01-85   12:00a</div>
+            <br>
+            <div class="terminal-line">5 File(s)     2,304 bytes</div>
+            <div class="terminal-line">           638,976 bytes free</div>
+            <br>
+            <div class="terminal-line">
+                <span class="terminal-prompt">C:\></span><span class="terminal-cursor"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- VENTANA FILES -->
+    <div class="window" id="files" style="width: 500px; height: 400px; top: 10%; left: 30%;">
+        <div class="window-header">
+            <span>FILES.exe</span>
+            <span class="window-close" onclick="closeWindow('files')">✕</span>
+        </div>
+        <div class="window-content">
+            <div class="terminal-line">
+                <span class="terminal-prompt">[DIR]</span> Sistema
+            </div>
+            <div class="terminal-line">
+                <span class="terminal-prompt">[DIR]</span> Programas
+            </div>
+            <div class="terminal-line">
+                <span class="terminal-prompt">[DIR]</span> Documentos
+            </div>
+            <div class="terminal-line">
+                <span class="terminal-prompt">[DIR]</span> Imagenes
+            </div>
+            <br>
+            <div class="terminal-line">
+                <span class="terminal-prompt">[TXT]</span> readme.txt (2 KB)
+            </div>
+            <div class="terminal-line">
+                <span class="terminal-prompt">[EXE]</span> setup.exe (128 KB)
+            </div>
+            <div class="terminal-line">
+                <span class="terminal-prompt">[BAT]</span> autoexec.bat (1 KB)
+            </div>
+            <div class="terminal-line">
+                <span class="terminal-prompt">[SYS]</span> config.sys (512 B)
+            </div>
+            <br>
+            <div class="terminal-line">8 elementos | 640 KB disponibles</div>
+        </div>
+    </div>
+
+    <!-- VENTANA GALLERY -->
+    <div class="window" id="gallery" style="width: 500px; height: 450px; top: 12%; left: 28%;">
+        <div class="window-header">
+            <span>GALLERY.exe</span>
+            <span class="window-close" onclick="closeWindow('gallery')">✕</span>
+        </div>
+        <div class="window-content">
+            <div class="gallery-grid">
+                <div class="gallery-item">◆</div>
+                <div class="gallery-item">◈</div>
+                <div class="gallery-item">◊</div>
+                <div class="gallery-item">●</div>
+                <div class="gallery-item">○</div>
+                <div class="gallery-item">◉</div>
+                <div class="gallery-item">▲</div>
+                <div class="gallery-item">▼</div>
+                <div class="gallery-item">■</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VENTANA SYSTEM -->
+    <div class="window" id="system" style="width: 550px; height: 400px; top: 18%; left: 22%;">
+        <div class="window-header">
+            <span>SYSTEM.exe</span>
+            <span class="window-close" onclick="closeWindow('system')">✕</span>
+        </div>
+        <div class="window-content">
+            <div class="terminal-line">
+                <span class="terminal-prompt">></span> INFORMACIÓN DEL SISTEMA
+            </div>
+            <div class="terminal-line">═══════════════════════════════════════</div>
+            <br>
+            <div class="terminal-line">CPU: Intel 8088</div>
+            <div class="terminal-line">Velocidad: 4.77 MHz</div>
+            <div class="terminal-line">RAM: 640 KB</div>
+            <div class="terminal-line">Video: CGA Monocromo</div>
+            <div class="terminal-line">Audio: PC Speaker</div>
+            <br>
+            <div class="terminal-line">Almacenamiento:</div>
+            <div class="terminal-line">  [████████░░] Disco A: 360 KB (80%)</div>
+            <div class="terminal-line">  [██████░░░░] Disco C: 20 MB (60%)</div>
+            <br>
+            <div class="terminal-line">Estado: OPERATIVO</div>
+            <div class="terminal-line">Uptime: 42 dias, 13 horas</div>
+            <br>
+            <div class="terminal-line">
+                <span class="terminal-prompt">></span> Sistema estable<span class="terminal-cursor"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div>
+            <button class="taskbar-btn" onclick="openWindow('about')">INICIO</button>
+            <button class="taskbar-btn" onclick="openWindow('terminal')">TERMINAL</button>
+        </div>
+        <div style="text-shadow: 0 0 3px #0f0;">
+            CPU: 12% | RAM: 456KB/640KB | HDD: ▮▮▮▯▯
+        </div>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        function openWindow(id) {
+            document.getElementById(id).classList.add('active');
+        }
+
+        function closeWindow(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+
+        // Hacer las ventanas arrastrables
+        const windows = document.querySelectorAll('.window');
+        windows.forEach(win => {
+            const header = win.querySelector('.window-header');
+            let isDragging = false;
+            let currentX, currentY, initialX, initialY;
+
+            header.addEventListener('mousedown', e => {
+                if (e.target.classList.contains('window-close')) return;
+                isDragging = true;
+                initialX = e.clientX - win.offsetLeft;
+                initialY = e.clientY - win.offsetTop;
+            });
+
+            document.addEventListener('mousemove', e => {
+                if (!isDragging) return;
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+                win.style.left = currentX + 'px';
+                win.style.top = currentY + 'px';
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+        });
+    </script>
+</body>
+</html>

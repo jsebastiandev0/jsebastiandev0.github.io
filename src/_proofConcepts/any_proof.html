@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <!-- CRÍTICO: Asegura que la web sea mobile-first y use el ancho del dispositivo -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RetroDev OS - Portafolio de Desarrollador</title>
+    <!-- Carga del CDN de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuración personalizada de Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        mono: ['"Dank Mono"', 'ui-monospace', 'SFMono-regular', 'Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'],
+                    },
+                    colors: {
+                        'neon-green': '#00ff41',
+                        'dark-bg': '#1a1a1a',
+                        'terminal-frame': '#3a3a3a',
+                    },
+                    keyframes: {
+                        blink: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0' },
+                        }
+                    },
+                    animation: {
+                        blink: 'blink 1s step-end infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Estilos generales para asegurar que la página ocupe exactamente el viewport y no tenga scroll */
+        html, body {
+            height: 100%;
+            overflow: hidden; /* CLAVE para evitar el scroll del cuerpo */
+            margin: 0;
+            padding: 0;
+            cursor: default;
+        }
+        /* Estilo para simular el brillo del CRT */
+        .terminal-screen {
+            box-shadow: 0 0 10px rgba(0, 255, 65, 0.5), inset 0 0 5px rgba(0, 255, 65, 0.2);
+            text-shadow: 0 0 2px #00ff41;
+        }
+
+        /* Clase para el modal drageable (solo útil en desktop) */
+        .draggable {
+            cursor: grab;
+        }
+
+        .terminal-button {
+            transition: all 0.1s;
+        }
+        .terminal-button:hover {
+            box-shadow: 0 0 5px #00ff41;
+            transform: scale(1.05);
+        }
+        .terminal-button:active {
+            box-shadow: none;
+            transform: scale(0.98);
+        }
+
+        /* Cursor de consola que parpadea */
+        .cursor::after {
+            content: '_';
+            animation: blink 1s step-end infinite;
+        }
+
+        /* Adaptación de modales para móvil: ocupan toda la pantalla */
+        #modal-container .modal-window {
+            /* Por defecto en desktop será centrado y flotante (usando absolute + translate) */
+            /* En móvil, los hacemos 100% de ancho/alto */
+            @media (max-width: 640px) {
+                top: 0 !important;
+                left: 0 !important;
+                width: 100% !important;
+                height: 100% !important;
+                max-width: 100% !important;
+                max-height: 100% !important;
+                transform: none !important; /* Desactiva el arrastre en móvil para mejor UX */
+            }
+        }
+    </style>
+</head>
+<body class="bg-dark-bg font-mono text-neon-green antialiased">
+
+    <!-- Pantalla de Inicio (Oculta todo lo demás al cargar) -->
+    <div id="boot-screen" class="fixed inset-0 bg-dark-bg z-[100] p-8 flex flex-col justify-center items-start text-sm">
+        <pre id="boot-log" class="whitespace-pre-wrap leading-relaxed"></pre>
+        <span id="boot-cursor" class="cursor text-xl mt-4"></span>
+    </div>
+
+    <!-- Contenedor Principal: Ocupa el 100% del viewport -->
+    <div id="desktop" class="h-screen w-full flex flex-col p-4 terminal-screen opacity-0 transition-opacity duration-1000">
+
+        <!-- Área de Íconos/Apps: Adaptación Mobile First -->
+        <!-- En móvil (por defecto): Grid de 2 columnas centrado y con auto-fit para buen tamaño de toque -->
+        <!-- En desktop (sm:): Vuelve a ser una columna simple a la izquierda -->
+        <div id="icon-area" class="grid grid-cols-2 sm:flex sm:flex-col sm:space-y-4 sm:flex-grow gap-4 justify-center items-center flex-grow">
+            
+            <!-- Icon 1: Perfil -->
+            <button id="icon-profile" onclick="openModal('profile')"
+                    class="terminal-button w-full sm:w-32 p-3 border-2 border-neon-green rounded-lg text-center bg-terminal-frame/80 transition duration-150 opacity-0">
+                [ P ] PROFILE.EXE
+            </button>
+
+            <!-- Icon 2: Proyectos -->
+            <button id="icon-projects" onclick="openModal('projects')"
+                    class="terminal-button w-full sm:w-32 p-3 border-2 border-neon-green rounded-lg text-center bg-terminal-frame/80 transition duration-150 opacity-0">
+                [ D ] PROJECTS.DIR
+            </button>
+            
+            <!-- Icon 3: Habilidades -->
+            <button id="icon-skills" onclick="openModal('skills')"
+                    class="terminal-button w-full sm:w-32 p-3 border-2 border-neon-green rounded-lg text-center bg-terminal-frame/80 transition duration-150 opacity-0">
+                [ S ] SKILLS.TXT
+            </button>
+
+            <!-- Icon 4: Contacto (Nuevo) -->
+            <button id="icon-contact" onclick="openModal('contact')"
+                    class="terminal-button w-full sm:w-32 p-3 border-2 border-neon-green rounded-lg text-center bg-terminal-frame/80 transition duration-150 opacity-0">
+                [ H ] HIRE.CMD
+            </button>
+        </div>
+
+        <!-- Barra de Estado o Consola Inferior (Mantiene la información solicitada) -->
+        <div class="mt-4 p-2 border-t-2 border-neon-green flex justify-between items-center text-sm bg-dark-bg/50">
+            <span id="console-output" class="truncate">C:\>USER(DEV).INITIATE_SESSION | CONECTADO A: RED_NEURAL_GLOBAL</span>
+            <span id="clock" class="text-xs ml-4 flex-shrink-0"></span>
+        </div>
+    </div>
+
+    <!-- Contenedor de Modales (Superpuesto, oculto por defecto) -->
+    <div id="modal-container" class="absolute inset-0 bg-dark-bg/75 backdrop-blur-sm hidden items-center justify-center p-4">
+
+        <!-- Modal 1: PERFIL (PROFILE) -->
+        <div id="profile-modal" class="modal-window hidden w-full max-w-lg shadow-lg border-4 border-neon-green rounded-xl bg-terminal-frame/95 z-50 absolute" style="top: 10%; left: 10%;">
+            <!-- Header Draggable -->
+            <div class="draggable p-2 border-b-2 border-neon-green bg-dark-bg/75 flex justify-between items-center text-sm select-none">
+                <span class="font-bold">// PROFILE.BIO (ACCIÓN: 'PROFILE.EXE')</span>
+                <button onclick="closeModal('profile')" class="text-neon-green hover:text-white px-2 py-0.5 border border-neon-green rounded-sm">
+                    [ X ]
+                </button>
+            </div>
+            <!-- Contenido del Perfil -->
+            <div class="p-4 overflow-y-auto max-h-[80vh] sm:max-h-[70vh]">
+                <h2 class="text-xl mb-3 border-b border-neon-green/50">[[ DEV_NAME ]]</h2>
+                <p class="text-xs mb-4">FUNCIÓN: FULL-STACK ENGINEER | UBICACIÓN: SECTOR 42.B</p>
+                <pre class="whitespace-pre-wrap text-sm leading-relaxed">
+> EXPERIENCIA: 5+ AÑOS EN DESARROLLO DE SOFTWARE ROBUSTO Y ESCALABLE.
+> MISIÓN: CONVERTIR CONCEPTO EN CÓDIGO FUNCIONAL Y OPTIMIZADO.
+> LENGUAJES BASE: JAVASCRIPT/TYPESCRIPT, PYTHON, GO.
+> OBJETIVO ACTUAL: DOMINIO DE ARQUITECTURAS SERVERLESS Y MICROSERVICIOS.
+
+[!] CONTACTO:
+    > EMAIL: [dev@system.com]
+    > GITHUB: [github.com/dev_user]
+    > LINKEDIN: [linkedin.com/in/dev_profile]
+                </pre>
+            </div>
+        </div>
+
+        <!-- Modal 2: PROYECTOS (PROJECTS) -->
+        <div id="projects-modal" class="modal-window hidden w-full max-w-xl shadow-lg border-4 border-neon-green rounded-xl bg-terminal-frame/95 z-50 absolute" style="top: 25%; left: 25%;">
+            <!-- Header Draggable -->
+            <div class="draggable p-2 border-b-2 border-neon-green bg-dark-bg/75 flex justify-between items-center text-sm select-none">
+                <span class="font-bold">// PROJECTS.LIST (ACCIÓN: 'PROJECTS.DIR')</span>
+                <button onclick="closeModal('projects')" class="text-neon-green hover:text-white px-2 py-0.5 border border-neon-green rounded-sm">
+                    [ X ]
+                </button>
+            </div>
+            <!-- Contenido de Proyectos -->
+            <div class="p-4 overflow-y-auto max-h-[80vh] sm:max-h-[70vh]">
+                <!-- Proyecto 1 -->
+                <div class="mb-4 pb-2 border-b border-neon-green/30">
+                    <p class="font-bold text-lg">// NEURO-CHATBOT V2.1</p>
+                    <p class="text-xs">[[ ESTATUS: COMPLETO ]] | TECNOLOGÍA: PYTHON, TENSORFLOW</p>
+                    <p class="text-sm mt-1">SIMULACIÓN DE RED NEURONAL PARA PROCESAMIENTO DE LENGUAJE NATURAL. ALCANZÓ UN 95% DE PRECISIÓN EN EL DATASET X. <a href="#" class="text-white hover:underline">[VER CÓDIGO]</a></p>
+                </div>
+                <!-- Proyecto 2 -->
+                <div class="mb-4 pb-2 border-b border-neon-green/30">
+                    <p class="font-bold text-lg">// MICROSERVICE_AUTH</p>
+                    <p class="text-xs">[[ ESTATUS: PRODUCCIÓN ]] | TECNOLOGÍA: NODE.JS, AWS LAMBDA</p>
+                    <p class="text-sm mt-1">IMPLEMENTACIÓN DE UNA ARQUITECTURA DE AUTENTICACIÓN BASADA EN MICROSERVICIOS CON TOKEN JWT. ALTA DISPONIBILIDAD GARANTIZADA. <a href="#" class="text-white hover:underline">[VER DEMO]</a></p>
+                </div>
+                <!-- Proyecto 3 -->
+                <div>
+                    <p class="font-bold text-lg">// RETRO.OS_PORTFOLIO</p>
+                    <p class="text-xs">[[ ESTATUS: DESPLIEGUE ]] | TECNOLOGÍA: HTML, TAILWIND CSS, JS</p>
+                    <p class="text-sm mt-1">ESTA MISMA INTERFAZ. DEMUESTRA HABILIDADES EN FRONTEND Y MANIPULACIÓN DE DOM SIN LIBRERÍAS PESADAS. <a href="#" class="text-white hover:underline">[LEER DOCS]</a></p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal 3: HABILIDADES (SKILLS) -->
+        <div id="skills-modal" class="modal-window hidden w-full max-w-md shadow-lg border-4 border-neon-green rounded-xl bg-terminal-frame/95 z-50 absolute" style="top: 40%; left: 50%;">
+            <!-- Header Draggable -->
+            <div class="draggable p-2 border-b-2 border-neon-green bg-dark-bg/75 flex justify-between items-center text-sm select-none">
+                <span class="font-bold">// SKILLS.STACK (ACCIÓN: 'SKILLS.TXT')</span>
+                <button onclick="closeModal('skills')" class="text-neon-green hover:text-white px-2 py-0.5 border border-neon-green rounded-sm">
+                    [ X ]
+                </button>
+            </div>
+            <!-- Contenido de Habilidades -->
+            <div class="p-4 overflow-y-auto max-h-[80vh] sm:max-h-[70vh]">
+                <pre class="whitespace-pre-wrap text-sm leading-relaxed">
+> FRONTEND:
+    - REACT.JS
+    - VUE.JS (NIVEL MEDIO)
+    - TAILWIND CSS / SASS
+
+> BACKEND:
+    - NODE.JS (EXPRESS/NESTJS)
+    - DJANGO/FLASK
+    - GO (BÁSICO)
+
+> BASES DE DATOS:
+    - POSTGRESQL / MYSQL
+    - MONGODB (NO-SQL)
+    - REDIS
+
+> DEVOPS/CLOUD:
+    - DOCKER / KUBERNETES (INTRO)
+    - AWS (LAMBDA, S3, EC2)
+    - GIT / CI/CD (GITHUB ACTIONS)
+                </pre>
+            </div>
+        </div>
+
+        <!-- Modal 4: CONTACTO (HIRE) -->
+        <div id="contact-modal" class="modal-window hidden w-full max-w-sm shadow-lg border-4 border-neon-green rounded-xl bg-terminal-frame/95 z-50 absolute" style="top: 50%; left: 30%;">
+            <!-- Header Draggable -->
+            <div class="draggable p-2 border-b-2 border-neon-green bg-dark-bg/75 flex justify-between items-center text-sm select-none">
+                <span class="font-bold">// HIRE.CMD (ACCIÓN: 'ENVIAR MENSAJE')</span>
+                <button onclick="closeModal('contact')" class="text-neon-green hover:text-white px-2 py-0.5 border border-neon-green rounded-sm">
+                    [ X ]
+                </button>
+            </div>
+            <!-- Contenido de Contacto -->
+            <div class="p-4">
+                <p class="text-sm mb-3">COMUNICACIÓN ENCRIPTADA INICIADA. INGRESE PARÁMETROS.</p>
+                <input type="text" placeholder="REMITENTE_NAME" class="w-full bg-dark-bg border-2 border-neon-green p-2 text-sm mb-2 focus:outline-none focus:ring-1 focus:ring-neon-green">
+                <textarea placeholder="MENSAJE_ENCRIPTADO..." class="w-full h-24 bg-dark-bg border-2 border-neon-green p-2 text-sm resize-none focus:outline-none focus:ring-1 focus:ring-neon-green"></textarea>
+                <div class="mt-3 text-right">
+                    <button class="terminal-button text-xs border border-neon-green px-3 py-1 hover:bg-neon-green hover:text-dark-bg">
+                        [ ENVIAR.ACK ]
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // Variables globales
+        let activeModal = null;
+        const modalContainer = document.getElementById('modal-container');
+        const desktop = document.getElementById('desktop');
+        const bootScreen = document.getElementById('boot-screen');
+        const bootLog = document.getElementById('boot-log');
+        const icons = document.querySelectorAll('#icon-area button');
+
+        // --- FUNCIONES DEL SISTEMA ---
+
+        // Función para actualizar el reloj
+        function updateClock() {
+            const now = new Date();
+            const time = now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            const date = now.toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' });
+            document.getElementById('clock').textContent = `${date} ${time}`;
+        }
+
+        // --- ANIMACIÓN DE INICIO (BOOT UP) ---
+        function runBootSequence() {
+            const bootMessages = [
+                "INITIATING RETRO.OS V2.0...",
+                "CHECKING KERNEL INTEGRITY...",
+                "LOADING CORE MODULES...",
+                "LOADING FILESYSTEM: SUCCESS",
+                "AUTHENTICATION: USER(DEV) VERIFIED",
+                "INITIALIZING GRAPHICS INTERFACE...",
+                "STARTING DESKTOP ENVIRONMENT...",
+                "READY."
+            ];
+            let messageIndex = 0;
+
+            function typeMessage() {
+                if (messageIndex < bootMessages.length) {
+                    const message = bootMessages[messageIndex];
+                    // Crear el efecto de máquina de escribir
+                    let charIndex = 0;
+                    const typingInterval = setInterval(() => {
+                        bootLog.textContent += message[charIndex];
+                        charIndex++;
+                        if (charIndex === message.length) {
+                            clearInterval(typingInterval);
+                            bootLog.textContent += '\n'; // Nueva línea después de cada mensaje
+                            messageIndex++;
+                            // Pequeña pausa antes del siguiente mensaje
+                            setTimeout(typeMessage, 300); 
+                        }
+                    }, 50); // Velocidad de tecleo
+                } else {
+                    // Fin de la secuencia de booteo
+                    document.getElementById('boot-cursor').style.display = 'none';
+                    setTimeout(showDesktop, 1000); // Pausa final antes de mostrar el escritorio
+                }
+            }
+            
+            typeMessage();
+        }
+
+        function showDesktop() {
+            // Oculta la pantalla de inicio
+            bootScreen.classList.add('opacity-0');
+            setTimeout(() => {
+                bootScreen.style.display = 'none';
+            }, 1000); // Esperar a que la transición termine
+
+            // Muestra el escritorio
+            desktop.classList.remove('opacity-0');
+
+            // Carga animada de íconos
+            icons.forEach((icon, index) => {
+                setTimeout(() => {
+                    icon.classList.remove('opacity-0');
+                    icon.classList.add('transition-opacity', 'duration-300', 'ease-in-out');
+                }, 100 * index + 1000); // Retraso de 100ms entre íconos
+            });
+        }
+
+
+        // --- Funcionalidad de Modales ---
+        function openModal(id) {
+            const modalId = `${id}-modal`;
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                // Muestra el contenedor de modales y el modal específico
+                modalContainer.classList.remove('hidden');
+                modalContainer.classList.add('flex');
+                modal.classList.remove('hidden');
+                activeModal = modal;
+            }
+        }
+
+        function closeModal(id) {
+            const modalId = `${id}-modal`;
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                // Oculta el modal y verifica si hay otros modales abiertos
+                modal.classList.add('hidden');
+                activeModal = null;
+
+                // Si no hay más modales visibles, oculta el contenedor
+                const visibleModals = document.querySelectorAll('.modal-window:not(.hidden)');
+                if (visibleModals.length === 0) {
+                    modalContainer.classList.add('hidden');
+                    modalContainer.classList.remove('flex');
+                }
+            }
+        }
+
+        // --- Funcionalidad de Arrastrar Modales (Solo para Desktop) ---
+        let dragItem = null;
+        let active = false;
+        let xOffset = 0;
+        let yOffset = 0;
+
+        function isMobileView() {
+            // Determina si estamos en vista móvil (ancho <= 640px según Tailwind 'sm')
+            return window.innerWidth <= 640;
+        }
+
+        function dragStart(e) {
+            // Desactiva el arrastre en móviles
+            if (isMobileView() || !e.target.closest('.draggable')) {
+                return;
+            }
+
+            dragItem = e.target.closest('.modal-window');
+            active = true;
+
+            const style = window.getComputedStyle(dragItem);
+            const transformMatrix = new WebKitCSSMatrix(style.transform);
+            
+            xOffset = transformMatrix.m41;
+            yOffset = transformMatrix.m42;
+
+            if (e.type === "touchstart") {
+                initialX = e.touches[0].clientX - xOffset;
+                initialY = e.touches[0].clientY - yOffset;
+            } else {
+                initialX = e.clientX - xOffset;
+                initialY = e.clientY - yOffset;
+            }
+        }
+
+        function dragEnd() {
+            active = false;
+            dragItem = null;
+        }
+
+        function drag(e) {
+            if (active && dragItem && !isMobileView()) {
+                e.preventDefault();
+
+                let currentX, currentY;
+
+                if (e.type === "touchmove") {
+                    currentX = e.touches[0].clientX - initialX;
+                    currentY = e.touches[0].clientY - initialY;
+                } else {
+                    currentX = e.clientX - initialX;
+                    currentY = e.clientY - initialY;
+                }
+
+                xOffset = currentX;
+                yOffset = currentY;
+
+                setTranslate(currentX, currentY, dragItem);
+            }
+        }
+
+        function setTranslate(xPos, yPos, el) {
+            el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
+        }
+
+        // Asignar listeners de eventos al contenedor principal (desktop)
+        desktop.addEventListener("mousedown", dragStart, false);
+        document.addEventListener("mouseup", dragEnd, false); 
+        document.addEventListener("mousemove", drag, false);
+
+        // Soporte para touch
+        desktop.addEventListener("touchstart", dragStart, { passive: false });
+        document.addEventListener("touchend", dragEnd, false);
+        document.addEventListener("touchmove", drag, { passive: false });
+
+
+        // --- INICIALIZACIÓN ---
+        window.onload = function () {
+            // 1. Iniciar el reloj inmediatamente
+            setInterval(updateClock, 1000);
+            updateClock();
+
+            // 2. Iniciar la secuencia de booteo
+            runBootSequence();
+        };
+
+    </script>
+
+</body>
+</html>

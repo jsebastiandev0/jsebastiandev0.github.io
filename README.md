@@ -2,11 +2,13 @@
 
 ## Hi there 👋
 
-npm install vite
-npm run dev
+-- Para correr en ambiente de desarrollo:
+    npm install vite
+    npm run dev
 
-npm run build
-npm run deploy
+-- Para desplegar directamente en la rama de gh_pages
+    npm run build
+    npm run deploy
 
 for UNIX:
 
@@ -19,4 +21,4 @@ replace build to:
 
 ____________________________________________________________
 
-🔭 I’m currently working on ...
+🔭 
